@@ -1,0 +1,1442 @@
+[
+ {
+  "m": 0,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": false,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ },
+ {
+  "m": 0,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": true,
+  "recency_asr": false,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 1,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 2,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": true,
+  "thresh_asr": false
+ },
+ {
+  "m": 3,
+  "vote_ok": true,
+  "vote_asr": false,
+  "recency_ok": false,
+  "recency_asr": true,
+  "thresh_ok": false,
+  "thresh_asr": true
+ }
+]

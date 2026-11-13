@@ -16,6 +16,7 @@ cell = ParagraphStyle("c", parent=body, fontSize=8.3, leading=10, spaceAfter=0)
 cellb = ParagraphStyle("cb", parent=cell, fontName="Times-Bold")
 h1 = ParagraphStyle("h1", parent=ss["Title"], fontName="Times-Bold", fontSize=16, leading=20, spaceAfter=6)
 h2 = ParagraphStyle("h2", parent=ss["Heading2"], fontName="Times-Bold", fontSize=12.5, spaceBefore=10, spaceAfter=4, keepWithNext=1)
+h3 = ParagraphStyle("h3", parent=h2, fontSize=11, spaceBefore=6)
 cap = ParagraphStyle("cap", parent=body, fontSize=9, leading=11, alignment=1, textColor=colors.HexColor("#333333"))
 code = ParagraphStyle("code", parent=ss["Code"], fontSize=8, leading=10)
 
@@ -43,7 +44,7 @@ def figure(path, caption, width):
 
 def build(md="REPORT.md", out="REPORT.pdf"):
     doc = SimpleDocTemplate(out, pagesize=A4, leftMargin=2 * cm, rightMargin=2 * cm, topMargin=1.8 * cm, bottomMargin=1.8 * cm,
-                            title="RobustRAG Recreation and Thresholded Recency", author="Akash Tiwari, Vaibhav Soni")
+                            title="RobustRAG: Generation Against Temporal Conflicts, Adversarial Poisoning and Hallucination", author="Akash Tiwari, Vaibhav Soni")
     W = A4[0] - 4 * cm
     lines = open(md, encoding="utf8").read().splitlines()
     story, i, section, pending_fig = [], 0, None, None
@@ -54,6 +55,8 @@ def build(md="REPORT.md", out="REPORT.pdf"):
         ln = lines[i]
         if ln.startswith("# "):
             story.append(Paragraph(inline(ln[2:]), h1)); i += 1
+        elif ln.startswith("### "):
+            story.append(Paragraph(inline(ln[4:]), h3)); i += 1
         elif ln.startswith("## "):
             flush_fig()
             title = ln[3:]; section = title.split()[0]
@@ -94,7 +97,7 @@ def build(md="REPORT.md", out="REPORT.pdf"):
     merged, k = [], 0                      # keep every section heading on the same page as what follows it
     while k < len(story):
         f = story[k]
-        if isinstance(f, Paragraph) and f.style is h2 and k + 1 < len(story):
+        if isinstance(f, Paragraph) and f.style in (h2, h3) and k + 1 < len(story):
             merged.append(KeepTogether([f, story[k + 1]])); k += 2
         else:
             merged.append(f); k += 1

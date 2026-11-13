@@ -1,11 +1,15 @@
-# RobustRAG Recreation and Thresholded Recency for Temporal Conflicts under Bounded Poisoning
+# RobustRAG: Generation Against Temporal Conflicts, Adversarial Poisoning and Hallucination
 
 CS787, Group 8. Authors: Akash Tiwari (241090403) and Vaibhav Soni (241090419), IIT Kanpur ([@vbsoni-hpc](https://github.com/vbsoni-hpc)). Base paper: *Certifiably Robust RAG against Retrieval Corruption* (Xiang et al., 2024, arXiv:2405.15556). Code and results: [github.com/akashcoder-collab/robustrag-cs787](https://github.com/akashcoder-collab/robustrag-cs787).
 
 ## 1. Abstract
-Retrieval-augmented generation (RAG) can be manipulated by injecting malicious passages into the retrieved context. RobustRAG defends against this with an isolate-then-aggregate strategy: the LLM answers from each retrieved passage separately, and the answers are combined with a voting rule (keyword aggregation) or by averaging next-token probabilities (decoding aggregation), so that a few malicious passages cannot outvote the honest ones. We reimplement vanilla RAG and both RobustRAG aggregation methods on a single 4 GB laptop GPU and evaluate them against PoisonedRAG-style attacks with 0-3 poisoned passages out of 10. As in the paper, vanilla RAG is easily hijacked while both RobustRAG variants keep the attack success rate low at one poisoned passage; unlike the paper, the defenses cost a substantial part of the clean accuracy in our small-scale setting (Section 5).
+Retrieval-augmented generation (RAG) grounds an LLM's answer in retrieved passages, but the retrieved context can mislead it in three ways: **adversarial poisoning** (an attacker injects passages that push a wrong answer), **temporal conflicts** (passages that were correct at different times disagree, and the outdated majority wins), and **hallucination** (the model answers confidently without support from the evidence). We study all three around one defense, RobustRAG (Xiang et al., 2024).
 
-We then try, in principle, to extend RobustRAG to **time-sensitive questions**, where several passages are each correct for their own date and the latest one should win. Plain voting returns the stale majority, and "newest date wins" lets one forged date decide the answer. We propose **thresholded recency**: only answers supported by at least B+1 passages are eligible (B = assumed number of malicious passages), and each answer is dated by the (B+1)-th newest date among its supporters, so that B forged passages can neither create an eligible answer nor make one look newer. We argue why this keeps a bounded-adversary guarantee and test it on a controlled synthetic dataset with two attacks (Section 6).
+**Adversarial poisoning.** RobustRAG uses an isolate-then-aggregate strategy: the LLM answers from each retrieved passage separately, and the answers are combined with a voting rule (keyword aggregation) or by averaging next-token probabilities (decoding aggregation), so that a few malicious passages cannot outvote the honest ones. We reimplement vanilla RAG and both RobustRAG aggregation methods on a single 4 GB laptop GPU and evaluate them against PoisonedRAG-style attacks with 0-3 poisoned passages out of 10. As in the paper, vanilla RAG is easily hijacked while both RobustRAG variants keep the attack success rate low at one poisoned passage; unlike the paper, the defenses cost a substantial part of the clean accuracy in our small-scale setting (Section 5).
+
+**Hallucination.** We measure how often each method gives a wrong answer instead of abstaining ("I don't know"). Isolation alone does not reduce this in our setting; only a strict voting threshold does, by abstaining far more often, at a large cost in correct answers (Section 5.1).
+
+**Temporal conflicts.** We then try, in principle, to extend RobustRAG to **time-sensitive questions**, where several passages are each correct for their own date and the latest one should win. Plain voting returns the stale majority, and "newest date wins" lets one forged date decide the answer. We propose **thresholded recency**: only answers supported by at least B+1 passages are eligible (B = assumed number of malicious passages), and each answer is dated by the (B+1)-th newest date among its supporters, so that B forged passages can neither create an eligible answer nor make one look newer. We argue why this keeps a bounded-adversary guarantee and test it on a controlled synthetic dataset with two attacks (Section 6).
 
 ## 2. Why we did not use the paper's exact setup
 - **GPU memory.** The paper uses 7B-parameter models (Mistral-7B-Instruct, Llama2-7B-Chat). A 7B model needs about 14 GB in fp16, and about 4-5 GB even with 4-bit quantization; our only GPU is a 4 GB RTX 3050 laptop GPU. Qwen2.5-1.5B-Instruct (about 3 GB in fp16) was the largest instruction-tuned model that fit with room for 10-passage batches.
@@ -72,6 +76,21 @@ Reading:
 - **Not consistent with the paper:** the paper reports that RobustRAG barely reduces clean accuracy. Ours drops from 78% (vanilla) to 35% (keyword) and 52% (decoding). Likely causes: a 1.5B model rebuilding answers from keyword lists, no lemmatization or POS tagging, and our partly synthetic evidence.
 - **Threshold trade-off (our own observation):** the paper's adaptive threshold mu = min(0.2·n, 3) is usually 1-2 on our data. That more than doubles clean accuracy compared with the fixed mu = 3 (v1), but once the attacker has m >= mu passages its keywords pass the filter, and ASR jumps to 39% at m = 2. The fixed threshold of v1 is far more robust (ASR at most 2% for m <= 2) but far less useful. This matches the paper's statement that robustness is only possible for small k' relative to the number of useful passages, and its focus on k' = 1.
 - Decoding aggregation keeps the best accuracy under attack, but its ASR grows with m, as expected from averaging rather than thresholded voting.
+
+### 5.1 Hallucination: wrong answers instead of abstaining
+We use a simple proxy for hallucination: the share of questions where a method gives an answer (does not say "unknown") and the answer is wrong. This is computed from the saved outputs of the same 46 questions; it is a coarse measure, because our substring metric also counts partly correct answers as wrong.
+
+| Method | Abstains (m=0) | Wrong but answered (m=0) | Wrong but answered (m=1) |
+|---|---|---|---|
+| Vanilla RAG | 2.2% | 19.6% | 84.8% |
+| Keyword aggregation (final) | 4.3% | 60.9% | 65.2% |
+| Keyword aggregation v1 (fixed threshold 3) | 71.7% | 13.0% | 13.0% |
+| Decoding aggregation | 4.3% | 43.5% | 52.2% |
+
+Reading:
+- Without an attack, isolate-then-aggregate does **not** reduce unsupported answers in our setting: both final RobustRAG variants answer wrongly more often than vanilla RAG, because they are less accurate and rarely abstain.
+- Under one poisoned passage, vanilla RAG's wrong answers jump to 85% (most of them the attacker's answer), while the defenses stay lower (52-65%).
+- The strict fixed threshold (v1) has the fewest wrong answers (13%) because it abstains on 72% of questions. Abstaining is the mechanism that suppresses hallucination here, and it costs most of the correct answers. A dedicated hallucination check (for example, verifying the final answer against the passages with an entailment model) is future work; we did not implement one.
 
 ## 6. Attempted extension: thresholded recency for temporal conflicts
 **Problem.** Facts change ("who is the current head coach?"). Passages dated in the past were correct for their date, so majority voting can return a stale answer. Naive recency (newest date wins) fixes this but gives the attacker an easy win.

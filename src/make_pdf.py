@@ -7,15 +7,15 @@ from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.platypus import (SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, Image,
                                 ListFlowable, ListItem, Preformatted, KeepTogether)
 
-FIGS = {"4.": ("fig_main.png", "Figure 1. Accuracy (left) and attack success rate (right) vs number of poisoned passages, n = 46."),
-        "5.": ("fig_temporal.png", "Figure 2. Accuracy on the current answer under Attack A (left) and Attack B (right); coinciding lines hide each other.")}
+FIGS = {"5.": ("fig_main.png", "Figure 1. Accuracy (left) and attack success rate (right) vs number of poisoned passages, n = 46."),
+        "6.": ("fig_temporal.png", "Figure 2. Accuracy on the current answer under Attack A (left) and Attack B (right); coinciding lines hide each other.")}
 
 ss = getSampleStyleSheet()
 body = ParagraphStyle("b", parent=ss["Normal"], fontName="Times-Roman", fontSize=10, leading=13.5, spaceAfter=5)
 cell = ParagraphStyle("c", parent=body, fontSize=8.3, leading=10, spaceAfter=0)
 cellb = ParagraphStyle("cb", parent=cell, fontName="Times-Bold")
 h1 = ParagraphStyle("h1", parent=ss["Title"], fontName="Times-Bold", fontSize=16, leading=20, spaceAfter=6)
-h2 = ParagraphStyle("h2", parent=ss["Heading2"], fontName="Times-Bold", fontSize=12.5, spaceBefore=10, spaceAfter=4)
+h2 = ParagraphStyle("h2", parent=ss["Heading2"], fontName="Times-Bold", fontSize=12.5, spaceBefore=10, spaceAfter=4, keepWithNext=1)
 cap = ParagraphStyle("cap", parent=body, fontSize=9, leading=11, alignment=1, textColor=colors.HexColor("#333333"))
 code = ParagraphStyle("code", parent=ss["Code"], fontSize=8, leading=10)
 
@@ -91,6 +91,14 @@ def build(md="REPORT.md", out="REPORT.pdf"):
         else:
             i += 1
     flush_fig()
+    merged, k = [], 0                      # keep every section heading on the same page as what follows it
+    while k < len(story):
+        f = story[k]
+        if isinstance(f, Paragraph) and f.style is h2 and k + 1 < len(story):
+            merged.append(KeepTogether([f, story[k + 1]])); k += 2
+        else:
+            merged.append(f); k += 1
+    story = merged
     doc.build(story, onLaterPages=lambda c, d: (c.setFont("Times-Roman", 8), c.drawRightString(A4[0] - 2 * cm, 1 * cm, f"{d.page}")))
 
 if __name__ == "__main__":

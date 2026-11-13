@@ -1,12 +1,23 @@
 # RobustRAG Recreation and Thresholded Recency for Temporal Conflicts under Bounded Poisoning
 
-CS787, Group 8. Authors: Akash Tiwari (241090403) and Vaibhav Soni (241090419), IIT Kanpur ([@vbsoni-hpc](https://github.com/vbsoni-hpc)). Small-scale recreation of *Certifiably Robust RAG against Retrieval Corruption* (Xiang et al., 2024, arXiv:2405.15556), plus one extension.
+CS787, Group 8. Authors: Akash Tiwari (241090403) and Vaibhav Soni (241090419), IIT Kanpur ([@vbsoni-hpc](https://github.com/vbsoni-hpc)). Base paper: *Certifiably Robust RAG against Retrieval Corruption* (Xiang et al., 2024, arXiv:2405.15556).
 
-## 1. Summary
-1. **Recreation.** We implement vanilla RAG and RobustRAG's isolate-then-aggregate defense (keyword aggregation and decoding aggregation) and attack them with PoisonedRAG-style injected passages. Vanilla RAG collapses under poisoning: its attack success rate (ASR) goes from 2% to 85% with one poisoned passage out of ten, and to 91% with two. Both RobustRAG variants resist far better at one poisoned passage (keyword 11%, decoding 13% ASR). This matches the paper's empirical finding (vanilla above 90% ASR, RobustRAG at most 15%). Our first keyword-aggregation version (fixed threshold) lost most of its clean accuracy (15%); implementing the paper's adaptive threshold and final prompt raises it to 35%, at the cost of higher ASR once the attacker controls 2 or more passages. Clean accuracy is still below vanilla (78%), unlike the paper's near-zero drop.
-2. **Extension: thresholded recency.** When the correct answer changes over time, majority voting returns the stale majority, and naive "newest date wins" is broken by one passage with a fake newer date. We require an answer to have at least B+1 supporting passages, and we date each answer by the (B+1)-th newest date among its supporters, so that B forged dates cannot make an answer look newer. Our first version used the newest supporter date, and a review found it breaks with one forged date on the stale answer. Against both attacks the final rule keeps 100% accuracy up to the assumed budget B=2 and fails at 3, as the argument predicts. The data are synthetic and the test is a controlled sanity check, not a benchmark.
+## 1. Abstract
+Retrieval-augmented generation (RAG) can be manipulated by injecting malicious passages into the retrieved context. RobustRAG defends against this with an isolate-then-aggregate strategy: the LLM answers from each retrieved passage separately, and the answers are combined with a voting rule (keyword aggregation) or by averaging next-token probabilities (decoding aggregation), so that a few malicious passages cannot outvote the honest ones. We reimplement vanilla RAG and both RobustRAG aggregation methods on a single 4 GB laptop GPU and evaluate them against PoisonedRAG-style attacks with 0-3 poisoned passages out of 10. As in the paper, vanilla RAG is easily hijacked while both RobustRAG variants keep the attack success rate low at one poisoned passage; unlike the paper, the defenses cost a substantial part of the clean accuracy in our small-scale setting (Section 5).
 
-## 2. Setup (what is and is not faithful to the paper)
+We then try, in principle, to extend RobustRAG to **time-sensitive questions**, where several passages are each correct for their own date and the latest one should win. Plain voting returns the stale majority, and "newest date wins" lets one forged date decide the answer. We propose **thresholded recency**: only answers supported by at least B+1 passages are eligible (B = assumed number of malicious passages), and each answer is dated by the (B+1)-th newest date among its supporters, so that B forged passages can neither create an eligible answer nor make one look newer. We argue why this keeps a bounded-adversary guarantee and test it on a controlled synthetic dataset with two attacks (Section 6).
+
+## 2. Why we did not use the paper's exact setup
+- **GPU memory.** The paper uses 7B-parameter models (Mistral-7B-Instruct, Llama2-7B-Chat). A 7B model needs about 14 GB in fp16, and about 4-5 GB even with 4-bit quantization; our only GPU is a 4 GB RTX 3050 laptop GPU. Qwen2.5-1.5B-Instruct (about 3 GB in fp16) was the largest instruction-tuned model that fit with room for 10-passage batches.
+- **Running time.** Isolate-then-aggregate calls the LLM once per passage, and decoding aggregation runs a forward pass per passage per generated token. Even with the 1.5B model the main run took about 75 minutes for 50 questions and 4 attack levels, so 100 queries on three datasets with 7B models was not feasible in the time available for the project.
+- **Retrieval.** The paper retrieves passages with Google Search. That needs a paid search API, and search results change over time, so the paper's exact passages cannot be reproduced. We used a fixed local corpus (SQuAD validation paragraphs) with an open dense retriever, which is free and fully reproducible.
+- **Datasets.** RealtimeQA is time-dependent and is used with live search results; the biography task needs GPT-4 to write reference answers and GPT-3.5 as a judge. Both require paid APIs. SQuAD gives short reference answers that suit the paper's "answer appears in the response" metric. Because SQuAD has only one evidence paragraph per question, we added paraphrased evidence (Section 4).
+- **Closed models.** GPT-3.5 does not return the full next-token probabilities that decoding aggregation needs, and it costs money per call; we used only open local models.
+- **Certification.** The paper's certification (Algorithm 3) enumerates every keyword set an attacker could produce and calls the LLM for each, which multiplies the compute further. We report only a cheap heuristic indicator instead (Section 4).
+
+Because of these differences, our numbers should be compared with the paper's only in trend (who is vulnerable, who is robust), not in absolute value.
+
+## 3. Setup (what is and is not faithful to the paper)
 | Item | Paper | Ours |
 |---|---|---|
 | LLM | Mistral-7B-Instruct, Llama2-7B-Chat, GPT-3.5-turbo | Qwen2.5-1.5B-Instruct (fp16, 4 GB laptop GPU) |
@@ -15,7 +26,7 @@ CS787, Group 8. Authors: Akash Tiwari (241090403) and Vaibhav Soni (241090419), 
 | Attack | PoisonedRAG and prompt injection; mainly k'=1 corrupted passage | PoisonedRAG black-box style: question text + fabricated passage for an LLM-generated wrong target; injected passages take the top ranks and push out the bottom benign passages (as in the paper's threat model); m in {0,1,2,3} |
 | Metric | answer correct if reference answer appears in response | same |
 
-## 3. Implementation and deviations from the paper
+## 4. Implementation and deviations from the paper
 **Keyword aggregation (paper Algorithm 1).** The paper prompts each isolated passage with "answer the query ..., say 'I don't know' if no relevant information found", counts the n non-abstaining responses, extracts unique keyphrases from each response, keeps keywords with count >= mu = min(alpha·n, beta) (alpha=0.2, beta=3 for short QA), and asks the LLM to "answer the query using provided keywords", with keywords sorted alphabetically.
 
 We ran two versions (`src/keyword_rerun.py` reruns only the keyword part, on exactly the same questions, evidence and poisoned passages):
@@ -33,7 +44,7 @@ Reproducibility note: the first version of `load_data` built each gold-answer li
 - **Synthetic redundant evidence.** SQuAD has one evidence paragraph per question, but isolate-then-aggregate needs several agreeing passages. For each question we add 4 LLM paraphrases of the gold paragraph, giving 5 evidence passages plus 5 other retrieved passages. This favours the defenses; absolute numbers are not comparable to the paper.
 - 4 of the 50 generated attack targets were themselves correct answers (e.g. target "Encourage growth" for gold "encourage growth", target "XXI" containing gold "XX"). The attack cannot succeed on these, so we exclude them; all results use the remaining 46 questions.
 
-## 4. Results: recreation (n = 46 questions, k = 10)
+## 5. Results: recreation (n = 46 questions, k = 10)
 Figure: `fig_main.png`.
 
 Accuracy:
@@ -62,7 +73,7 @@ Reading:
 - **Threshold trade-off (our own observation):** the paper's adaptive threshold mu = min(0.2·n, 3) is usually 1-2 on our data. That more than doubles clean accuracy compared with the fixed mu = 3 (v1), but once the attacker has m >= mu passages its keywords pass the filter, and ASR jumps to 39% at m = 2. The fixed threshold of v1 is far more robust (ASR at most 2% for m <= 2) but far less useful. This matches the paper's statement that robustness is only possible for small k' relative to the number of useful passages, and its focus on k' = 1.
 - Decoding aggregation keeps the best accuracy under attack, but its ASR grows with m, as expected from averaging rather than thresholded voting.
 
-## 5. Extension: temporal claim normalization + thresholded recency
+## 6. Attempted extension: thresholded recency for temporal conflicts
 **Problem.** Facts change ("who is the current head coach?"). Passages dated in the past were correct for their date, so majority voting can return a stale answer. Naive recency (newest date wins) fixes this but gives the attacker an easy win.
 
 **Method.**
@@ -91,7 +102,7 @@ Accuracy on the current answer:
 
 Reading: only the robust-date rule resists both attacks, and it breaks exactly when the attacker exceeds the budget (m = 3 = B+1). Majority vote picks the stale answer whenever the old answer has more passages (55% of questions here). The numbers are all-or-nothing because the passages are templated and the LLM extracts names essentially perfectly; this shows the decision rule behaves as argued, not how it performs on real data.
 
-## 6. Limitations
+## 7. Limitations
 - Small samples (46 and 40 questions), one seed, no confidence intervals.
 - A 1.5B local LLM instead of the paper's 7B models.
 - Synthetic redundant evidence in the recreation; fully synthetic, templated temporal data.
@@ -100,7 +111,7 @@ Reading: only the robust-date rule resists both attacks, and it breaks exactly w
 - The main results come from one run whose question list is stored in `results.json`; rerunning `robustrag.py` after the determinism fix selects a different (but reproducible) set of questions.
 - The temporal guarantee assumes correct claim extraction, and the setup never tests a current answer with few supporters.
 
-## 7. Reproduce
+## 8. Reproduce
 ```
 pip install torch transformers datasets sentence-transformers matplotlib
 python src/robustrag.py 50 results.json   # about 75 min on an RTX 3050 4GB

@@ -97,7 +97,7 @@ class RAG:
 def load_data(n):
     ds = load_dataset("rajpurkar/squad", split="validation")     # open-domain SQuAD: corpus = all validation paragraphs
     passages = sorted(set(ds["context"]))
-    items = [(r["question"], list(set(r["answers"]["text"]))) for r in ds]
+    items = [(r["question"], sorted(set(r["answers"]["text"]))) for r in ds]   # sorted: set order varies per process
     items = [it for it in items if norm(it[1][0]) not in ("yes", "no")]
     passages = [" ".join(p.split()[:110]) for p in passages]      # keep passages short (4GB GPU)
     random.Random(0).shuffle(items)

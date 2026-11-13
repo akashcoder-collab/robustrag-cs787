@@ -6,6 +6,7 @@ Small-scale recreation of *Certifiably Robust RAG against Retrieval Corruption* 
 
 - `src/robustrag.py`: vanilla RAG, keyword aggregation, decoding aggregation, PoisonedRAG-style attack
 - `src/temporal.py`: claim extraction + date parsing; majority vote vs naive recency vs thresholded recency (newest-date v1 and robust-date final), under two attacks
+- `src/keyword_rerun.py`: paper-faithful keyword aggregation (adaptive threshold, keyphrases, keyword prompt), same questions as the main run
 - `src/plots.py`: figures
 - `results.json`, `results_temporal.json`: raw per-question outputs
 - `fig_main.png`, `fig_temporal.png`: plots
@@ -13,4 +14,4 @@ Small-scale recreation of *Certifiably Robust RAG against Retrieval Corruption* 
 ![main](fig_main.png)
 ![temporal](fig_temporal.png)
 
-Caveats (details in the report): Qwen2.5-1.5B on a 4 GB GPU, 46/40 questions, synthetic redundant evidence and synthetic temporal data, no real certification (heuristic indicator only), keyword aggregation deviates from the paper's threshold and prompt.
+Caveats (details in the report): Qwen2.5-1.5B on a 4 GB GPU, 46/40 questions, synthetic redundant evidence and synthetic temporal data, no real certification (heuristic indicator only), approximate keyword extraction (no POS tagging or lemmatization).

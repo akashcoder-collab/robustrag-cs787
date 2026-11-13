@@ -3,7 +3,7 @@
 CS787, Group 8. Authors: Akash Tiwari (241090403) and Vaibhav Soni (241090419), IIT Kanpur ([@vbsoni-hpc](https://github.com/vbsoni-hpc)). Small-scale recreation of *Certifiably Robust RAG against Retrieval Corruption* (Xiang et al., 2024, arXiv:2405.15556), plus one extension.
 
 ## 1. Summary
-1. **Recreation.** We implement vanilla RAG and RobustRAG's isolate-then-aggregate defense (keyword aggregation and decoding aggregation) and attack them with PoisonedRAG-style injected passages. Vanilla RAG collapses under poisoning: its attack success rate (ASR) goes from 2% to 85% with one poisoned passage out of ten, and to 91% with two. Both RobustRAG variants resist far better at one poisoned passage (keyword 0%, decoding 13% ASR). This matches the paper's empirical finding (vanilla above 90% ASR, RobustRAG at most 15%). Unlike the paper, our keyword aggregation loses most of its clean accuracy (15% vs 78% for vanilla); Section 3 explains the implementation deviations that likely cause this.
+1. **Recreation.** We implement vanilla RAG and RobustRAG's isolate-then-aggregate defense (keyword aggregation and decoding aggregation) and attack them with PoisonedRAG-style injected passages. Vanilla RAG collapses under poisoning: its attack success rate (ASR) goes from 2% to 85% with one poisoned passage out of ten, and to 91% with two. Both RobustRAG variants resist far better at one poisoned passage (keyword 11%, decoding 13% ASR). This matches the paper's empirical finding (vanilla above 90% ASR, RobustRAG at most 15%). Our first keyword-aggregation version (fixed threshold) lost most of its clean accuracy (15%); implementing the paper's adaptive threshold and final prompt raises it to 35%, at the cost of higher ASR once the attacker controls 2 or more passages. Clean accuracy is still below vanilla (78%), unlike the paper's near-zero drop.
 2. **Extension: thresholded recency.** When the correct answer changes over time, majority voting returns the stale majority, and naive "newest date wins" is broken by one passage with a fake newer date. We require an answer to have at least B+1 supporting passages, and we date each answer by the (B+1)-th newest date among its supporters, so that B forged dates cannot make an answer look newer. Our first version used the newest supporter date, and a review found it breaks with one forged date on the stale answer. Against both attacks the final rule keeps 100% accuracy up to the assumed budget B=2 and fails at 3, as the argument predicts. The data are synthetic and the test is a controlled sanity check, not a benchmark.
 
 ## 2. Setup (what is and is not faithful to the paper)
@@ -16,12 +16,13 @@ CS787, Group 8. Authors: Akash Tiwari (241090403) and Vaibhav Soni (241090419), 
 | Metric | answer correct if reference answer appears in response | same |
 
 ## 3. Implementation and deviations from the paper
-**Keyword aggregation (paper Algorithm 1).** The paper prompts each isolated passage with "answer the query ..., say 'I don't know' if no relevant information found", counts the n non-abstaining responses, extracts unique keyphrases from each response, keeps keywords with count >= mu = min(alpha·n, beta) (alpha=0.2, beta=3 for short QA), and asks the LLM to "answer the query using provided keywords", with keywords sorted alphabetically. **Our deviations:**
-- fixed threshold mu = 3 instead of min(alpha·n, beta), which is stricter when few passages answer;
-- single-word keywords, with stop-words and words from the question removed, instead of keyphrases;
-- the final prompt reuses the per-passage prompt (which allows "unknown") and lists keywords by count.
+**Keyword aggregation (paper Algorithm 1).** The paper prompts each isolated passage with "answer the query ..., say 'I don't know' if no relevant information found", counts the n non-abstaining responses, extracts unique keyphrases from each response, keeps keywords with count >= mu = min(alpha·n, beta) (alpha=0.2, beta=3 for short QA), and asks the LLM to "answer the query using provided keywords", with keywords sorted alphabetically.
 
-As a result, 74% of keyword-aggregation outputs at m=0 are "unknown", which is the main cause of its low clean accuracy. We did not have GPU time to rerun with the paper's threshold and prompt.
+We ran two versions (`src/keyword_rerun.py` reruns only the keyword part, on exactly the same questions, evidence and poisoned passages):
+- **v1 (first attempt):** fixed threshold mu = 3; single words only, with question words removed; the final prompt reused the per-passage prompt (which allows "unknown") and listed keywords by count. 74% of its outputs at m=0 were "unknown", hence 15% clean accuracy.
+- **Final (paper-faithful):** mu = min(0.2·n, 3) with n the number of non-abstaining responses; keywords = all informative words plus keyphrases of consecutive informative words (a stop-word list replaces the paper's POS tagger, and we do not lemmatize); final prompt "Answer the query using the provided keywords" with keywords sorted alphabetically. Only 4% of outputs at m=0 are "unknown". On our data n averages 6.9, so mu is usually 1 or 2, much lower than v1's 3. The per-passage prompt says "unknown" where the paper says "I don't know".
+
+Reproducibility note: the first version of `load_data` built each gold-answer list from a Python `set`, whose order changes between runs, so question selection was not reproducible. It is now sorted, and `keyword_rerun.py` reads the exact question list stored in `results.json`.
 
 **Decoding aggregation (paper Algorithm 2).** The paper keeps passages with P("I don't know") < gamma = 0.99, sums their next-token probability vectors, and takes the top token if its margin over the runner-up exceeds eta (eta = 0 for short QA); otherwise it uses the no-retrieval token. **Ours:** we drop a passage if its most likely first token starts "unk" (stricter than gamma=0.99), average the probability vectors (same argmax as summing) and decode greedily; with eta = 0 the no-retrieval fallback only matters for exact ties, which we ignore.
 
@@ -35,17 +36,30 @@ As a result, 74% of keyword-aggregation outputs at m=0 are "unknown", which is t
 ## 4. Results: recreation (n = 46 questions, k = 10)
 Figure: `fig_main.png`.
 
-| Poisoned passages m | Acc. vanilla | Acc. keyword | Acc. decoding | Heuristic indicator (keyword) | ASR vanilla | ASR keyword | ASR decoding |
-|---|---|---|---|---|---|---|---|
-| 0 | 78.3% | 15.2% | 52.2% | 15.2% | 2.2% | 0.0% | 0.0% |
-| 1 | 15.2% | 15.2% | 47.8% | 13.0% | 84.8% | 0.0% | 13.0% |
-| 2 | 8.7% | 15.2% | 39.1% | 10.9% | 91.3% | 2.2% | 32.6% |
-| 3 | 10.9% | 13.0% | 34.8% | 0.0% | 89.1% | 17.4% | 47.8% |
+Accuracy:
+
+| Poisoned passages m | Vanilla | Keyword (final) | Keyword v1 | Decoding | Heuristic indicator (keyword final) |
+|---|---|---|---|---|---|
+| 0 | 78.3% | 34.8% | 15.2% | 52.2% | 34.8% |
+| 1 | 15.2% | 30.4% | 15.2% | 47.8% | 28.3% |
+| 2 | 8.7% | 28.3% | 15.2% | 39.1% | 0.0% |
+| 3 | 10.9% | 28.3% | 13.0% | 34.8% | 0.0% |
+
+Attack success rate:
+
+| Poisoned passages m | Vanilla | Keyword (final) | Keyword v1 | Decoding |
+|---|---|---|---|---|
+| 0 | 2.2% | 8.7% | 0.0% | 0.0% |
+| 1 | 84.8% | 10.9% | 0.0% | 13.0% |
+| 2 | 91.3% | 39.1% | 2.2% | 32.6% |
+| 3 | 89.1% | 39.1% | 17.4% | 47.8% |
+
+At m = 0 there is no attack, so a non-zero ASR is a measurement artefact: the attacker's target string happens to appear in the answer (e.g. short targets such as "ten" or "5"). Treat about 2-9% as the noise floor of this metric.
 
 Reading:
-- **Consistent with the paper:** vanilla RAG is highly vulnerable (85-91% ASR), and both RobustRAG variants keep ASR low at the paper's main setting of one corrupted passage (0% keyword, 13% decoding; the paper reports at most 15%).
-- **Not consistent with the paper:** the paper reports that RobustRAG barely reduces clean accuracy. Our keyword aggregation drops from 78% to 15%, which we attribute to the threshold and prompt deviations in Section 3; decoding aggregation drops to 52%.
-- Keyword aggregation's ASR stays at or below 2% while m < 3 and rises to 17% at m = 3, when the attacker can reach the threshold of 3 on its own.
+- **Consistent with the paper:** vanilla RAG is highly vulnerable (85-91% ASR), and both RobustRAG variants keep ASR low at the paper's main setting of one corrupted passage (keyword 11%, decoding 13%; the paper reports at most 15%).
+- **Not consistent with the paper:** the paper reports that RobustRAG barely reduces clean accuracy. Ours drops from 78% (vanilla) to 35% (keyword) and 52% (decoding). Likely causes: a 1.5B model rebuilding answers from keyword lists, no lemmatization or POS tagging, and our partly synthetic evidence.
+- **Threshold trade-off (our own observation):** the paper's adaptive threshold mu = min(0.2·n, 3) is usually 1-2 on our data. That more than doubles clean accuracy compared with the fixed mu = 3 (v1), but once the attacker has m >= mu passages its keywords pass the filter, and ASR jumps to 39% at m = 2. The fixed threshold of v1 is far more robust (ASR at most 2% for m <= 2) but far less useful. This matches the paper's statement that robustness is only possible for small k' relative to the number of useful passages, and its focus on k' = 1.
 - Decoding aggregation keeps the best accuracy under attack, but its ASR grows with m, as expected from averaging rather than thresholded voting.
 
 ## 5. Extension: temporal claim normalization + thresholded recency
@@ -82,13 +96,15 @@ Reading: only the robust-date rule resists both attacks, and it breaks exactly w
 - A 1.5B local LLM instead of the paper's 7B models.
 - Synthetic redundant evidence in the recreation; fully synthetic, templated temporal data.
 - No real certification; the grey curve is a heuristic.
-- Keyword aggregation deviates from the paper (threshold, keyword extraction, final prompt), which likely explains its low clean accuracy.
+- Keyword extraction approximates the paper's (stop-word list instead of POS tags, no lemmatization); clean accuracy remains well below vanilla.
+- The main results come from one run whose question list is stored in `results.json`; rerunning `robustrag.py` after the determinism fix selects a different (but reproducible) set of questions.
 - The temporal guarantee assumes correct claim extraction, and the setup never tests a current answer with few supporters.
 
 ## 7. Reproduce
 ```
 pip install torch transformers datasets sentence-transformers matplotlib
 python src/robustrag.py 50 results.json   # about 75 min on an RTX 3050 4GB
-python src/plots.py results.json          # drops invalid targets, writes fig_main.png
+python src/keyword_rerun.py 50            # paper-faithful keyword aggregation, about 10 min
+python src/plots.py results.json          # merges keyword results, drops invalid targets, writes fig_main.png
 python src/temporal.py 40                 # fig_temporal.png, results_temporal.json
 ```

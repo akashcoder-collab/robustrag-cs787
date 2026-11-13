@@ -15,8 +15,9 @@ body = ParagraphStyle("b", parent=ss["Normal"], fontName="Times-Roman", fontSize
 cell = ParagraphStyle("c", parent=body, fontSize=8.3, leading=10, spaceAfter=0)
 cellb = ParagraphStyle("cb", parent=cell, fontName="Times-Bold")
 h1 = ParagraphStyle("h1", parent=ss["Title"], fontName="Times-Bold", fontSize=16, leading=20, spaceAfter=6)
-h2 = ParagraphStyle("h2", parent=ss["Heading2"], fontName="Times-Bold", fontSize=12.5, spaceBefore=10, spaceAfter=4, keepWithNext=1)
+h2 = ParagraphStyle("h2", parent=ss["Heading2"], fontName="Times-Bold", fontSize=12.5, spaceBefore=10, spaceAfter=4)
 h3 = ParagraphStyle("h3", parent=h2, fontSize=11, spaceBefore=6)
+item = ParagraphStyle("item", parent=body, leftIndent=16, bulletIndent=4, spaceAfter=3)
 cap = ParagraphStyle("cap", parent=body, fontSize=9, leading=11, alignment=1, textColor=colors.HexColor("#333333"))
 code = ParagraphStyle("code", parent=ss["Code"], fontSize=8, leading=10)
 
@@ -75,14 +76,15 @@ def build(md="REPORT.md", out="REPORT.pdf"):
             prev = story.pop() if story and isinstance(story[-1], Paragraph) and len(story[-1].text) < 40 else None
             story.append(KeepTogether(([prev] if prev else []) + [table(rows, W), Spacer(1, 6)]))   # keep short label + table on one page
         elif re.match(r"^(\d+\.|-) ", ln):
-            items, ordered = [], ln[0].isdigit()
+            # one Paragraph per item (not a ListFlowable), so a list can break across pages
+            # and a heading is only kept together with the first item
+            ordered, n = ln[0].isdigit(), 0
             while i < len(lines) and re.match(r"^(\d+\.|-) ", lines[i]):
                 txt = re.sub(r"^(\d+\.|-) ", "", lines[i]); i += 1
                 while i < len(lines) and lines[i].startswith("   ") and lines[i].strip():
                     txt += " " + lines[i].strip(); i += 1
-                items.append(ListItem(Paragraph(inline(txt), body), leftIndent=14))
-            story.append(ListFlowable(items, bulletType="1" if ordered else "bullet", start="1" if ordered else None,
-                                      leftIndent=14, bulletFontSize=9))
+                n += 1
+                story.append(Paragraph(inline(txt), item, bulletText=f"{n}." if ordered else "•"))
         elif ln.strip():
             txt = ln
             i += 1
@@ -97,8 +99,11 @@ def build(md="REPORT.md", out="REPORT.pdf"):
     merged, k = [], 0                      # keep every section heading on the same page as what follows it
     while k < len(story):
         f = story[k]
-        if isinstance(f, Paragraph) and f.style in (h2, h3) and k + 1 < len(story):
-            merged.append(KeepTogether([f, story[k + 1]])); k += 2
+        is_label = isinstance(f, Paragraph) and len(f.text) < 80 and f.text.rstrip().rstrip("</b>").endswith(":")
+        if isinstance(f, Paragraph) and (f.style in (h2, h3) or is_label) and k + 1 < len(story):
+            nxt = story[k + 1]
+            inner = list(nxt._content) if isinstance(nxt, KeepTogether) else [nxt]   # flatten: nested KeepTogether misplaces breaks
+            merged.append(KeepTogether([f] + inner)); k += 2
         else:
             merged.append(f); k += 1
     story = merged

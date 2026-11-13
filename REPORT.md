@@ -34,7 +34,7 @@ Because of these differences, our numbers should be compared with the paper's on
 **Keyword aggregation (paper Algorithm 1).** The paper prompts each isolated passage with "answer the query ..., say 'I don't know' if no relevant information found", counts the n non-abstaining responses, extracts unique keyphrases from each response, keeps keywords with count >= mu = min(alpha·n, beta) (alpha=0.2, beta=3 for short QA), and asks the LLM to "answer the query using provided keywords", with keywords sorted alphabetically.
 
 We ran two versions (`src/keyword_rerun.py` reruns only the keyword part, on exactly the same questions, evidence and poisoned passages):
-- **v1 (first attempt):** fixed threshold mu = 3; single words only, with question words removed; the final prompt reused the per-passage prompt (which allows "unknown") and listed keywords by count. 74% of its outputs at m=0 were "unknown", hence 15% clean accuracy.
+- **v1 (first attempt):** fixed threshold mu = 3; single words only, with question words removed; the final prompt reused the per-passage prompt (which allows "unknown") and listed keywords by count. 72% of its outputs at m=0 were "unknown", hence 15% clean accuracy.
 - **Final (paper-faithful):** mu = min(0.2·n, 3) with n the number of non-abstaining responses; keywords = all informative words plus keyphrases of consecutive informative words (a stop-word list replaces the paper's POS tagger, and we do not lemmatize); final prompt "Answer the query using the provided keywords" with keywords sorted alphabetically. Only 4% of outputs at m=0 are "unknown". On our data n averages 6.9, so mu is usually 1 or 2, much lower than v1's 3. The per-passage prompt says "unknown" where the paper says "I don't know".
 
 Reproducibility note: the first version of `load_data` built each gold-answer list from a Python `set`, whose order changes between runs, so question selection was not reproducible. It is now sorted, and `keyword_rerun.py` reads the exact question list stored in `results.json`.
@@ -129,12 +129,25 @@ Reading: only the robust-date rule resists both attacks, and it breaks exactly w
 - Keyword extraction approximates the paper's (stop-word list instead of POS tags, no lemmatization); clean accuracy remains well below vanilla.
 - The main results come from one run whose question list is stored in `results.json`; rerunning `robustrag.py` after the determinism fix selects a different (but reproducible) set of questions.
 - The temporal guarantee assumes correct claim extraction, and the setup never tests a current answer with few supporters.
+- Hallucination is only measured with a coarse proxy; no hallucination-specific defense was built.
 
-## 8. Reproduce
+## 8. Conclusion
+On adversarial poisoning, our small-scale recreation reproduces RobustRAG's main empirical finding: isolating passages and aggregating the answers keeps a single poisoned passage from taking over the answer (attack success 11-13% vs 85% for vanilla RAG). It does not reproduce the paper's small loss in clean accuracy, and it exposes a clear trade-off in the keyword threshold: the paper's adaptive threshold keeps more correct answers, while a fixed, higher threshold resists more poisoned passages. On hallucination, isolation alone did not reduce wrong answers in our setting; abstaining did, at a high cost in correct answers. On temporal conflicts, we showed that both plain voting and naive recency fail, that a first thresholded version is still broken by re-dating a stale answer, and that dating each answer by its (B+1)-th newest supporter resists both attacks up to the assumed budget. Natural next steps are running the same code with 7B models and real time-stamped corpora, implementing the paper's certification, testing current answers with few supporters, and adding an answer-verification step against hallucination.
+
+## 9. Reproduce
 ```
-pip install torch transformers datasets sentence-transformers matplotlib
+pip install torch transformers datasets sentence-transformers matplotlib reportlab pymupdf
 python src/robustrag.py 50 results.json   # about 75 min on an RTX 3050 4GB
 python src/keyword_rerun.py 50            # paper-faithful keyword aggregation, about 10 min
 python src/plots.py results.json          # merges keyword results, drops invalid targets, writes fig_main.png
 python src/temporal.py 40                 # fig_temporal.png, results_temporal.json
+python src/make_pdf.py                    # REPORT.pdf from REPORT.md
 ```
+
+## References
+1. C. Xiang, T. Wu, Z. Zhong, D. Wagner, D. Chen, P. Mittal. Certifiably Robust RAG against Retrieval Corruption. arXiv:2405.15556, 2024.
+2. W. Zou, R. Geng, B. Wang, J. Jia. PoisonedRAG: Knowledge Corruption Attacks to Retrieval-Augmented Generation of Large Language Models. arXiv:2402.07867, 2024.
+3. P. Lewis et al. Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. NeurIPS 2020 (arXiv:2005.11401).
+4. P. Rajpurkar, J. Zhang, K. Lopyrev, P. Liang. SQuAD: 100,000+ Questions for Machine Comprehension of Text. EMNLP 2016.
+5. Qwen Team. Qwen2.5 Technical Report. arXiv:2412.15115, 2024.
+6. N. Reimers, I. Gurevych. Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks. EMNLP 2019 (model used: sentence-transformers/all-MiniLM-L6-v2).

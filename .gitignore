@@ -7,3 +7,4 @@ src/bench.py
 *.pyc
 temporal.log
 keyword.log
+PROJECT_ROADMAP.md

@@ -25,7 +25,7 @@ Small-scale study of adversarial poisoning, hallucination and temporal conflicts
 - `results*.json`, `results_keyword*.json`, `results_temporal*.json`, `certify_qwen7b.json`: raw per-question outputs; `results_mistral7b_run1_summary.json`: aggregates of the complete Mistral run (no suffix: Qwen2.5-1.5B; `_qwen7b`, `_mistral7b`: 7B runs)
 
 ## Reproduce
-Models: Qwen2.5-1.5B-Instruct (generation) and all-MiniLM-L6-v2 (retrieval), both downloaded from Hugging Face; tested on an RTX 3050 4 GB.
+Models: Qwen2.5-1.5B-Instruct, Qwen2.5-7B-Instruct and Mistral-7B-Instruct-v0.2 (generation) and all-MiniLM-L6-v2 (retrieval), all from Hugging Face. The 1.5B run below was tested on an RTX 3050 4 GB; the 7B runs used a 96 GB RTX PRO 6000.
 ```
 pip install torch transformers datasets sentence-transformers matplotlib reportlab pymupdf
 python src/robustrag.py 50 results.json   # about 75 min
@@ -35,6 +35,6 @@ python src/temporal.py 40                 # about 5 min
 python src/make_pdf.py
 ```
 
-7B runs: see REPORT.md Section 10 (`RR_LLM`, `RR_TAG`, `RR_PROMPT` environment variables).
+7B runs and certification: see REPORT.md Section 9 (`RR_LLM`, `RR_TAG`, `RR_PROMPT`, `RR_QUESTIONS`, `RR_DTYPE` environment variables).
 
-Caveats (details in the report): Mistral-7B needed a stricter prompt; its corrected decoding rerun covers 28 questions (GPU failure); 1.5B model results use a heuristic instead of certification; 46/40 questions, synthetic redundant evidence and synthetic temporal data, no real certification (heuristic indicator only), approximate keyword extraction, hallucination measured with a coarse proxy.
+Caveats (details in the report): 46-49 poisoning questions and 40 synthetic temporal questions, one seed (95% intervals about ±13 points); SQuAD with synthetic paraphrased evidence instead of the paper's search-based datasets; Mistral-7B needed a stricter prompt, and its 20-token rerun covers 28 questions (GPU failure) while the complete 48-question run survives only as aggregates; certification was run for Qwen2.5-7B only (the 1.5B model has a heuristic indicator); approximate keyword extraction; hallucination measured with a coarse proxy.

@@ -5,7 +5,7 @@ CS787 Group 8. Authors: Akash Tiwari (241090403) and Vaibhav Soni (241090419), I
 Small-scale recreation of *Certifiably Robust RAG against Retrieval Corruption* (Xiang et al., 2024) and an extension for temporal conflicts under bounded poisoning. Full write-up: [REPORT.md](REPORT.md).
 
 - `src/robustrag.py`: vanilla RAG, keyword aggregation, decoding aggregation, PoisonedRAG-style attack
-- `src/temporal.py`: temporal claim normalization, plain voting vs naive recency vs thresholded recency
+- `src/temporal.py`: claim extraction + date parsing; majority vote vs naive recency vs thresholded recency (newest-date v1 and robust-date final), under two attacks
 - `src/plots.py`: figures
 - `results.json`, `results_temporal.json`: raw per-question outputs
 - `fig_main.png`, `fig_temporal.png`: plots
@@ -13,4 +13,4 @@ Small-scale recreation of *Certifiably Robust RAG against Retrieval Corruption* 
 ![main](fig_main.png)
 ![temporal](fig_temporal.png)
 
-Caveats (details in the report): Qwen2.5-1.5B on a 4 GB GPU, 50/40 questions, synthetic redundant evidence and synthetic temporal data, approximate certification.
+Caveats (details in the report): Qwen2.5-1.5B on a 4 GB GPU, 46/40 questions, synthetic redundant evidence and synthetic temporal data, no real certification (heuristic indicator only), keyword aggregation deviates from the paper's threshold and prompt.

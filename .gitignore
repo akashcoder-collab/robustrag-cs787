@@ -5,3 +5,4 @@ run.log
 __pycache__/
 src/bench.py
 *.pyc
+temporal.log

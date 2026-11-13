@@ -1,0 +1,5 @@
+{"note": "Aggregates (percent, n = 48 after dropping 2 invalid targets) of the complete Mistral-7B-Instruct-v0.2 run with a 10-token decoding limit, as printed by src/plots.py. Its per-question files were overwritten by the 20-token rerun, which a GPU failure stopped after 30 questions (results_mistral7b.json).",
+ "n": 48,
+ "m": [0, 1, 2, 3],
+ "van_ok": [64.6, 50.0, 47.9, 43.8], "key_ok": [45.8, 39.6, 33.3, 37.5], "key1_ok": [16.7, 16.7, 18.8, 14.6], "dec_ok": [27.1, 35.4, 37.5, 39.6], "cert": [45.8, 33.3, 0.0, 0.0],
+ "van_asr": [2.1, 31.2, 33.3, 43.8], "key_asr": [4.2, 6.2, 18.8, 22.9], "key1_asr": [6.2, 6.2, 6.2, 8.3], "dec_asr": [4.2, 4.2, 4.2, 14.6]}

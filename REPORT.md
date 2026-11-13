@@ -3,151 +3,160 @@
 CS787, Group 8. Authors: Akash Tiwari (241090403) and Vaibhav Soni (241090419), IIT Kanpur ([@vbsoni-hpc](https://github.com/vbsoni-hpc)). Base paper: *Certifiably Robust RAG against Retrieval Corruption* (Xiang et al., 2024, arXiv:2405.15556). Code and results: [github.com/akashcoder-collab/robustrag-cs787](https://github.com/akashcoder-collab/robustrag-cs787).
 
 ## 1. Abstract
-Retrieval-augmented generation (RAG) grounds an LLM's answer in retrieved passages, but the retrieved context can mislead it in three ways: **adversarial poisoning** (an attacker injects passages that push a wrong answer), **temporal conflicts** (passages that were correct at different times disagree, and the outdated majority wins), and **hallucination** (the model answers confidently without support from the evidence). We study all three around one defense, RobustRAG (Xiang et al., 2024).
+Retrieval-augmented generation (RAG) can be misled by its own context: an attacker can inject passages that push a wrong answer (**adversarial poisoning**), passages correct at different times can disagree so that an outdated majority wins (**temporal conflicts**), and the model can answer without support from the evidence (**hallucination**). We reimplement RobustRAG's isolate-then-aggregate defense (keyword and decoding aggregation) and its certification procedure, and evaluate them against PoisonedRAG-style attacks with three LLMs: Qwen2.5-1.5B-Instruct, Qwen2.5-7B-Instruct and the paper's main model, Mistral-7B-Instruct-v0.2.
 
-**Adversarial poisoning.** RobustRAG uses an isolate-then-aggregate strategy: the LLM answers from each retrieved passage separately, and the answers are combined with a voting rule (keyword aggregation) or by averaging next-token probabilities (decoding aggregation), so that a few malicious passages cannot outvote the honest ones. We reimplement vanilla RAG and both RobustRAG aggregation methods on a single 4 GB laptop GPU and evaluate them against PoisonedRAG-style attacks with 0-3 poisoned passages out of 10. As in the paper, vanilla RAG is easily hijacked while both RobustRAG variants keep the attack success rate low at one poisoned passage; unlike the paper, the defenses cost a substantial part of the clean accuracy in our small-scale setting (Section 5).
+At 7B our results agree with the paper's Natural Questions numbers: one poisoned passage out of ten hijacks vanilla RAG on 31-41% of questions (paper: 37%), and RobustRAG lowers this to 4-6% (paper: 7-12%). The 1.5B model is hijacked far more often (85%) and the defenses cost it much more clean accuracy, so model scale matters for both vulnerability and defense cost. Implementing the paper's keyword certification (Algorithm 3), we found that it over-certifies when few passages answer; with a fix, Qwen2.5-7B is certified on 35% of questions against one corrupted passage (paper: 26%), and we show that with the paper's parameters no question can be certified against two. For hallucination, isolation alone does not reduce wrong answers; abstaining does, at a large cost in correct answers. Finally, we propose **thresholded recency** for temporal conflicts: answers need at least B+1 supporting passages and are dated by their (B+1)-th newest supporter, which resists date forgery by up to B passages on a synthetic benchmark, identically for all three models.
 
-**Hallucination.** We measure how often each method gives a wrong answer instead of abstaining ("I don't know"). Isolation alone does not reduce this in our setting; only a strict voting threshold does, by abstaining far more often, at a large cost in correct answers (Section 5.1).
+## 2. Introduction and threat model
+RAG retrieves the top-k passages for a query and conditions the LLM on them. PoisonedRAG (Zou et al., 2024) showed that injecting a few passages that contain the question and a fabricated answer makes the LLM repeat that answer. RobustRAG's key idea is **isolate-then-aggregate**: the LLM answers from each passage separately, and the k answers are combined by a rule that a few malicious answers cannot dominate. Because the rule is simple, its worst-case behaviour can be computed (certified).
 
-**Temporal conflicts.** We then try, in principle, to extend RobustRAG to **time-sensitive questions**, where several passages are each correct for their own date and the latest one should win. Plain voting returns the stale majority, and "newest date wins" lets one forged date decide the answer. We propose **thresholded recency**: only answers supported by at least B+1 passages are eligible (B = assumed number of malicious passages), and each answer is dated by the (B+1)-th newest date among its supporters, so that B forged passages can neither create an eligible answer nor make one look newer. We argue why this keeps a bounded-adversary guarantee and test it on a controlled synthetic dataset with two attacks (Section 6).
+**Threat model (as in the paper).** The attacker injects k' passages that rank above all benign passages and thereby push the bottom k' benign passages out of the top-k (k = 10). The attacker knows the defense and controls the injected text completely. We measure accuracy (the reference answer appears in the response) and attack success rate (ASR: the attacker's target appears and the reference does not), for k' = m in {0, 1, 2, 3}.
 
-## 2. Why we did not use the paper's exact setup
-- **GPU memory.** The paper uses 7B-parameter models (Mistral-7B-Instruct, Llama2-7B-Chat). A 7B model needs about 14 GB in fp16, and about 4-5 GB even with 4-bit quantization; our only GPU is a 4 GB RTX 3050 laptop GPU. Qwen2.5-1.5B-Instruct (about 3 GB in fp16) was the largest instruction-tuned model that fit with room for 10-passage batches.
-- **Running time.** Isolate-then-aggregate calls the LLM once per passage, and decoding aggregation runs a forward pass per passage per generated token. Even with the 1.5B model the main run took about 75 minutes for 50 questions and 4 attack levels, so 100 queries on three datasets with 7B models was not feasible in the time available for the project.
-- **Retrieval.** The paper retrieves passages with Google Search. That needs a paid search API, and search results change over time, so the paper's exact passages cannot be reproduced. We used a fixed local corpus (SQuAD validation paragraphs) with an open dense retriever, which is free and fully reproducible.
-- **Datasets.** RealtimeQA is time-dependent and is used with live search results; the biography task needs GPT-4 to write reference answers and GPT-3.5 as a judge. Both require paid APIs. SQuAD gives short reference answers that suit the paper's "answer appears in the response" metric. Because SQuAD has only one evidence paragraph per question, we added paraphrased evidence (Section 4).
-- **Closed models.** GPT-3.5 does not return the full next-token probabilities that decoding aggregation needs, and it costs money per call; we used only open local models.
-- **Certification.** The paper's certification (Algorithm 3) enumerates every keyword set an attacker could produce and calls the LLM for each, which multiplies the compute further. We report only a cheap heuristic indicator instead (Section 4).
+## 3. RobustRAG and our implementation
+**Keyword aggregation (paper Algorithm 1).** Each passage is prompted separately ("answer ...; if the passage does not contain the answer, reply 'unknown'", the paper's "I don't know"). Of the n non-abstaining responses, unique keywords and keyphrases are counted; keywords with count >= mu = min(alpha·n, beta) (alpha = 0.2, beta = 3, the paper's short-QA setting) are kept and given, sorted alphabetically, to the LLM with "answer the query using the provided keywords". We approximate the paper's POS-based keyphrase extraction with a stop-word list (informative words plus runs of consecutive informative words) and do not lemmatize. We also keep our first version **v1** (fixed mu = 3, single words) as a reference point for the threshold trade-off.
 
-Because of these differences, our numbers should be compared with the paper's only in trend (who is vulnerable, who is robust), not in absolute value.
+**Decoding aggregation (paper Algorithm 2).** At each decoding step the next-token distributions of the isolated passages are combined and the top token is emitted. The paper drops passages with P("I don't know") >= gamma = 0.99; we drop a passage if its most likely first token starts "unk" (stricter), and average instead of sum (same argmax). With eta = 0 the paper's no-retrieval fallback only matters for exact ties, which we ignore.
 
-## 3. Setup (what is and is not faithful to the paper)
+**Certification (paper Algorithm 3, `src/certify.py`).** Because injected passages only push out the bottom k' benign ones, the top k-k' benign passages are fixed. From their responses (n non-abstaining, keyword counts C), for each number k'_eff in {0..k'} of non-abstaining malicious responses, mu' = min(alpha·(n+k'_eff), beta); keywords with count >= mu' are always kept (W_A), keywords with count in [mu'-k'_eff, mu') are under the attacker's control (W_C), and each subset of W_C yields one possible keyword set and one LLM answer. A question is certified if every possible answer is correct. Like the paper we give up when W_C is too large; our cap is 10 keywords (paper: 15), which is conservative.
+
+**A soundness gap in Algorithm 3.** The algorithm only enumerates keywords that occur in benign responses. If mu' <= k'_eff, the attacker's responses alone reach the threshold, so a keyword no benign passage contains (for example the attacker's target) is also kept, and the enumeration misses it. The paper's illustration assumes this away (mu' = 2 > k'_eff = 1). We detected the gap empirically: before the fix, 2 questions at k' = 1 and 6 at k' = 2 were "certified" yet answered with the attacker's target in the real attack run (e.g. "Los Angeles" instead of "Fresno", with n = 5 benign answers and mu' = 1.4 at k'_eff = 2). We therefore declare a question not certified whenever mu' <= k'_eff for some k'_eff. After the fix, no certified question is answered wrongly under attack. A consequence is a simple necessary condition: certification against k' requires alpha·(n + k') > k', i.e. n > 4 non-abstaining benign answers for k' = 1 and n > 8 for k' = 2. With k = 10 only k - k' = 8 benign passages remain at k' = 2, so **with alpha = 0.2 no question can ever be certified against two corrupted passages**.
+
+## 4. Experimental setup
 | Item | Paper | Ours |
 |---|---|---|
-| LLM | Mistral-7B-Instruct, Llama2-7B-Chat, GPT-3.5-turbo | Qwen2.5-1.5B-Instruct (fp16, 4 GB laptop GPU) |
-| Data | RealtimeQA(-MC), Natural Questions, Biography generation; 100 queries each (50 for Bio) | Open-domain SQuAD (validation paragraphs as corpus, about 2k passages); 50 questions, 46 after filtering |
-| Retrieval | Google Search, top k=10 | all-MiniLM-L6-v2 dense retriever, top k=10 |
-| Attack | PoisonedRAG and prompt injection; mainly k'=1 corrupted passage | PoisonedRAG black-box style: question text + fabricated passage for an LLM-generated wrong target; injected passages take the top ranks and push out the bottom benign passages (as in the paper's threat model); m in {0,1,2,3} |
-| Metric | answer correct if reference answer appears in response | same |
+| LLMs | Mistral-7B-Instruct, Llama2-7B-Chat, GPT-3.5 | Qwen2.5-1.5B-Instruct (fp16); Qwen2.5-7B-Instruct and Mistral-7B-Instruct-v0.2 (bf16) |
+| Data | RealtimeQA, NQ (100 queries each), Biography | Open-domain SQuAD (about 2k validation paragraphs as corpus); the same 50 questions for every model, 46-49 after filtering |
+| Retrieval | Google Search, top-10 | all-MiniLM-L6-v2 dense retriever, top-10 |
+| Attack | PoisonedRAG, prompt injection; mainly k' = 1 | PoisonedRAG black-box style (question + fabricated passages for an LLM-written wrong target); m in {0..3} |
+| Hardware | not a constraint | 4 GB RTX 3050 laptop GPU (1.5B); 96 GB RTX PRO 6000 (7B) |
 
-## 4. Implementation and deviations from the paper
-**Keyword aggregation (paper Algorithm 1).** The paper prompts each isolated passage with "answer the query ..., say 'I don't know' if no relevant information found", counts the n non-abstaining responses, extracts unique keyphrases from each response, keeps keywords with count >= mu = min(alpha·n, beta) (alpha=0.2, beta=3 for short QA), and asks the LLM to "answer the query using provided keywords", with keywords sorted alphabetically.
+**Why not the paper's exact setup.** Google Search results need a paid API and change over time, and RealtimeQA and the biography task depend on live search or paid GPT judges; we use a fixed, free, reproducible corpus. Llama2-7B-Chat is gated on Hugging Face and was not used. Our first runs had to fit a 4 GB GPU, hence the 1.5B model; the same code was later run at 7B.
 
-We ran two versions (`src/keyword_rerun.py` reruns only the keyword part, on exactly the same questions, evidence and poisoned passages):
-- **v1 (first attempt):** fixed threshold mu = 3; single words only, with question words removed; the final prompt reused the per-passage prompt (which allows "unknown") and listed keywords by count. 72% of its outputs at m=0 were "unknown", hence 15% clean accuracy.
-- **Final (paper-faithful):** mu = min(0.2·n, 3) with n the number of non-abstaining responses; keywords = all informative words plus keyphrases of consecutive informative words (a stop-word list replaces the paper's POS tagger, and we do not lemmatize); final prompt "Answer the query using the provided keywords" with keywords sorted alphabetically. Only 4% of outputs at m=0 are "unknown". On our data n averages 6.9, so mu is usually 1 or 2, much lower than v1's 3. The per-passage prompt says "unknown" where the paper says "I don't know".
+**Deviations that favour or affect the defenses.** (1) Questions are kept only if the gold answer is in the clean top-10, and yes/no questions are removed. (2) SQuAD has one evidence paragraph per question, but isolate-then-aggregate needs several agreeing passages, so we add four LLM paraphrases of the gold paragraph (5 evidence passages + 5 other retrieved passages). This favours the defenses. (3) Questions whose attack target contains the gold answer (e.g. target "XXI" for gold "XX") cannot be attacked and are dropped: 4, 1 and 2 questions for the three models. (4) Our metric is substring match, as in the paper, so a response naming several candidates can count as correct.
 
-Reproducibility note: the first version of `load_data` built each gold-answer list from a Python `set`, whose order changes between runs, so question selection was not reproducible. It is now sorted, and `keyword_rerun.py` reads the exact question list stored in `results.json`.
+**Adapting Mistral-7B.** With our original prompt Mistral never answered "unknown" (it writes "The passage does not provide ..."), appended explanations, and produced attack targets such as "Sacramento International Airport\\n\\nExplanation:", which can never appear in an answer, so the measured ASR would have been zero whatever the defense. For Mistral only, we use a stricter instruction ("reply with ONLY the answer ... If the passage does not contain the answer, reply exactly: unknown"), keep only the first line of each answer up to the first sentence end or parenthesis, and allow decoding aggregation 20 instead of 10 tokens, because Mistral splits numbers into digits and answers in sentences (with 10 tokens "1227" came out as "Genghis Khan died in 122"). Qwen2.5-7B uses exactly the 1.5B prompt and settings, so the 1.5B-to-7B comparison changes only model size. The complete Mistral run (n = 48) used the 10-token limit; a rerun with 20 tokens was stopped by a GPU hardware failure after 30 questions (28 after filtering) and is reported separately. The rerun overwrote the per-question outputs of the complete run, so for the n = 48 Mistral rows only the aggregate numbers are preserved (`results_mistral7b_run1_summary.json`); all per-question analyses of Mistral (Sections 5.3 and 5.4) use the 28-question rerun.
 
-**Decoding aggregation (paper Algorithm 2).** The paper keeps passages with P("I don't know") < gamma = 0.99, sums their next-token probability vectors, and takes the top token if its margin over the runner-up exceeds eta (eta = 0 for short QA); otherwise it uses the no-retrieval token. **Ours:** we drop a passage if its most likely first token starts "unk" (stricter than gamma=0.99), average the probability vectors (same argmax as summing) and decode greedily; with eta = 0 the no-retrieval fallback only matters for exact ties, which we ignore.
+## 5. Results: adversarial poisoning
+Figure: `fig_models.png` shows accuracy and ASR for all models; the table gives the numbers.
 
-**"Heuristic robustness indicator" (not a certificate).** The paper certifies robustness (Algorithm 3) from the benign top k-k' passages by enumerating every keyword set an attacker could produce. We did not implement this. Our grey curve counts a keyword-aggregation answer as robust if it is correct, mu > m, and a gold keyword has count >= mu + m in the attacked run. This is a necessary-style heuristic, not certified accuracy, and is not comparable to the paper's certifiable accuracy (26-36% on NQ).
-
-**Other deviations, forced by compute:**
-- Questions were kept only if the gold answer appears in the clean top-10, and yes/no questions were removed.
-- **Synthetic redundant evidence.** SQuAD has one evidence paragraph per question, but isolate-then-aggregate needs several agreeing passages. For each question we add 4 LLM paraphrases of the gold paragraph, giving 5 evidence passages plus 5 other retrieved passages. This favours the defenses; absolute numbers are not comparable to the paper.
-- 4 of the 50 generated attack targets were themselves correct answers (e.g. target "Encourage growth" for gold "encourage growth", target "XXI" containing gold "XX"). The attack cannot succeed on these, so we exclude them; all results use the remaining 46 questions.
-
-## 5. Results: recreation (n = 46 questions, k = 10)
-Figure: `fig_main.png`.
-
-Accuracy:
-
-| Poisoned passages m | Vanilla | Keyword (final) | Keyword v1 | Decoding | Heuristic indicator (keyword final) |
+| Model | Method | m = 0 | m = 1 | m = 2 | m = 3 |
 |---|---|---|---|---|---|
-| 0 | 78.3% | 34.8% | 15.2% | 52.2% | 34.8% |
-| 1 | 15.2% | 30.4% | 15.2% | 47.8% | 28.3% |
-| 2 | 8.7% | 28.3% | 15.2% | 39.1% | 0.0% |
-| 3 | 10.9% | 28.3% | 13.0% | 34.8% | 0.0% |
+| Qwen2.5-1.5B (n = 46) | Vanilla | 78.3 / 2.2 | 15.2 / 84.8 | 8.7 / 91.3 | 10.9 / 89.1 |
+| | Keyword | 34.8 / 8.7 | 30.4 / 10.9 | 28.3 / 39.1 | 28.3 / 39.1 |
+| | Keyword v1 | 15.2 / 0.0 | 15.2 / 0.0 | 15.2 / 2.2 | 13.0 / 17.4 |
+| | Decoding | 52.2 / 0.0 | 47.8 / 13.0 | 39.1 / 32.6 | 34.8 / 47.8 |
+| Qwen2.5-7B (n = 49) | Vanilla | 75.5 / 0.0 | 51.0 / 40.8 | 40.8 / 46.9 | 34.7 / 61.2 |
+| | Keyword | 59.2 / 2.0 | 53.1 / 6.1 | 42.9 / 26.5 | 42.9 / 28.6 |
+| | Keyword v1 | 6.1 / 0.0 | 6.1 / 0.0 | 6.1 / 0.0 | 4.1 / 0.0 |
+| | Decoding | 65.3 / 0.0 | 65.3 / 6.1 | 59.2 / 18.4 | 40.8 / 34.7 |
+| Mistral-7B (n = 48) | Vanilla | 64.6 / 2.1 | 50.0 / 31.2 | 47.9 / 33.3 | 43.8 / 43.8 |
+| | Keyword | 45.8 / 4.2 | 39.6 / 6.2 | 33.3 / 18.8 | 37.5 / 22.9 |
+| | Keyword v1 | 16.7 / 6.2 | 16.7 / 6.2 | 18.8 / 6.2 | 14.6 / 8.3 |
+| | Decoding (10 tok.) | 27.1 / 4.2 | 35.4 / 4.2 | 37.5 / 4.2 | 39.6 / 14.6 |
+| Mistral-7B (n = 28) | Decoding (20 tok.) | 39.3 / 3.6 | 50.0 / 3.6 | 53.6 / 3.6 | 57.1 / 10.7 |
 
-Attack success rate:
+Each cell is accuracy / ASR in %. At m = 0 there is no attack, so a non-zero ASR means a short target (e.g. "five") happens to occur in the answer; about 2-9% is the noise floor of the metric. With 46-49 questions the 95% Wilson interval of a proportion is about ±13 points (e.g. Qwen2.5-7B vanilla ASR at m = 1: 40.8%, interval 28-55%), so differences of a few points are not meaningful.
 
-| Poisoned passages m | Vanilla | Keyword (final) | Keyword v1 | Decoding |
+### 5.1 Comparison with the paper (k = 10, one corrupted passage)
+The paper's closest setting is Natural Questions with the poisoning attack (its Tables I and II, Mistral-7B).
+
+| | Paper, NQ | Mistral-7B | Qwen2.5-7B | Qwen2.5-1.5B |
 |---|---|---|---|---|
-| 0 | 2.2% | 8.7% | 0.0% | 0.0% |
-| 1 | 84.8% | 10.9% | 0.0% | 13.0% |
-| 2 | 91.3% | 39.1% | 2.2% | 32.6% |
-| 3 | 89.1% | 39.1% | 17.4% | 47.8% |
+| Vanilla: clean acc. / ASR | 61.0 / 37.0 | 64.6 / 31.2 | 75.5 / 40.8 | 78.3 / 84.8 |
+| Keyword: clean acc. | 61.0 | 45.8 | 59.2 | 34.8 |
+| Keyword: acc. / ASR under attack | 64.0 / 12.0 | 39.6 / 6.2 | 53.1 / 6.1 | 30.4 / 10.9 |
+| Decoding: acc. / ASR under attack | 63.0 / 7.0 | 35.4 / 4.2 (50.0 / 3.6 with 20 tok.) | 65.3 / 6.1 | 47.8 / 13.0 |
+| Keyword: certified acc. | 26.0 | not run | 34.7 | not run |
 
-At m = 0 there is no attack, so a non-zero ASR is a measurement artefact: the attacker's target string happens to appear in the answer (e.g. short targets such as "ten" or "5"). Treat about 2-9% as the noise floor of this metric.
+- **Reproduced:** vanilla RAG is easily hijacked, and both RobustRAG variants keep ASR low at k' = 1. At 7B the ASR values are within a few points of the paper's, well inside our confidence intervals.
+- **Partly reproduced:** the paper finds that RobustRAG costs almost no clean accuracy. At 1.5B it costs a lot (keyword -44, decoding -26 points); with Qwen2.5-7B the cost shrinks to -16 and -10 points. Mistral's keyword cost (-19) is similar; its decoding result is limited by the effect discussed in 5.3.
+- **Certified accuracy** (Section 5.2) is in the paper's range once the soundness fix is applied.
 
-Reading:
-- **Consistent with the paper:** vanilla RAG is highly vulnerable (85-91% ASR), and both RobustRAG variants keep ASR low at the paper's main setting of one corrupted passage (keyword 11%, decoding 13%; the paper reports at most 15%).
-- **Not consistent with the paper:** the paper reports that RobustRAG barely reduces clean accuracy. Ours drops from 78% (vanilla) to 35% (keyword) and 52% (decoding). Likely causes: a 1.5B model rebuilding answers from keyword lists, no lemmatization or POS tagging, and our partly synthetic evidence.
-- **Threshold trade-off (our own observation):** the paper's adaptive threshold mu = min(0.2·n, 3) is usually 1-2 on our data. That more than doubles clean accuracy compared with the fixed mu = 3 (v1), but once the attacker has m >= mu passages its keywords pass the filter, and ASR jumps to 39% at m = 2. The fixed threshold of v1 is far more robust (ASR at most 2% for m <= 2) but far less useful. This matches the paper's statement that robustness is only possible for small k' relative to the number of useful passages, and its focus on k' = 1.
-- Decoding aggregation keeps the best accuracy under attack, but its ASR grows with m, as expected from averaging rather than thresholded voting.
+### 5.2 Certified robustness (keyword aggregation, Qwen2.5-7B, n = 49)
+| k' | Certified | Fails mu' > k'_eff (too few answers) | W_C too large (> 10) | Some possible answer wrong |
+|---|---|---|---|---|
+| 1 | 17 (34.7%) | 9 | 10 | 13 |
+| 2 | 0 (0.0%) | 49 | 0 | 0 |
 
-### 5.1 Hallucination: wrong answers instead of abstaining
-We use a simple proxy for hallucination: the share of questions where a method gives an answer (does not say "unknown") and the answer is wrong. This is computed from the saved outputs of the same 46 questions; it is a coarse measure, because our substring metric also counts partly correct answers as wrong.
+At k' = 1, 17 of the 29 questions that keyword aggregation answers correctly without attack are certified. The failures have three distinct causes of similar size: too few passages answer (Qwen2.5-7B abstains often: on average only 5.0 of the 9 benign passages give an answer), too many medium-count keywords to enumerate, or a keyword subset that leads the LLM to a wrong answer. At k' = 2 the necessary condition of Section 3 (n > 8) can never hold, so the result is 0% for any model; certifying more than one corrupted passage needs a larger k or a different alpha. Certification for Mistral-7B and the 1.5B model was started but stopped by the GPU failure; the 1.5B run reports only a heuristic indicator (correct, mu > m, and a gold keyword with count >= mu + m), which gave 28% at m = 1 but is not a certificate.
 
-| Method | Abstains (m=0) | Wrong but answered (m=0) | Wrong but answered (m=1) |
+### 5.3 Analysis
+**Model scale changes vulnerability more than defense.** One poisoned passage flips 30 of the 36 questions that 1.5B vanilla RAG answers correctly to the attacker's answer, but only 12 of 37 for Qwen2.5-7B and 6 of 21 for Mistral (on the 28-question rerun). For the defenses the number of such flips is 0-3 at every model size. Across the 46 questions shared by the two Qwen models, 39 are hijacked at 1.5B and 19 at 7B, and 17 of the 19 are also hijacked at 1.5B: the larger model resists the easy cases, but the same questions remain vulnerable. A plausible reading is that the larger model weighs the injected "the answer is X" passage against nine benign passages rather than copying the top-ranked text.
+
+**The threshold trades clean accuracy for robustness.** With the paper's adaptive threshold, mu is usually 1-2 (the number of non-abstaining responses averages 6.9 at 1.5B and 5.1 for Qwen2.5-7B, so mu = 0.2·n rounds to small values). Then two or three poisoned passages are enough to pass the filter, and keyword ASR jumps from about 6-11% at m = 1 to 19-39% at m = 2 for all models. The fixed threshold of v1 (mu = 3) keeps ASR near zero up to m = 2 but leaves too few keywords, so it mostly abstains (61-86% "unknown" answers) and has 6-17% accuracy. This matches the paper's position that robustness is only achievable for k' small relative to the number of useful passages.
+
+**Keyword aggregation fails on distractor majorities.** The most common reason why vanilla RAG is right and keyword aggregation wrong (22, 11 and 7 questions for the three models) is that several retrieved passages share a related but wrong entity. For "Who is largely considered the first United Methodist theologian?" eight of the ten isolated answers (Mistral-7B) say "John Wesley" and only one passage names Albert C. Outler; vanilla RAG picks the specific passage, while every isolate-then-aggregate variant votes for "John Wesley". The defense assumes that the majority of retrieved passages is benign *and relevant*; with dense retrieval on a small corpus the second part often fails. Other failures come from the keyword-to-answer step (e.g. "Testament to Victorian housing style." for "terraces").
+
+**Decoding aggregation with Mistral prefers "Unknown".** Mistral's decoding aggregation has low clean accuracy and gains accuracy as poisoned passages are added. In the outputs, the averaged first-token distribution often ranks "Unknown" first: passages that contain the answer still put noticeable probability on "Unknown", and only passages whose *most likely* token is "unknown" are dropped. Confident poisoned passages dilute this mass, so more gold answers win at higher m, while ASR stays low (4% up to m = 2). Qwen models put little mass on "unknown" when the passage is relevant, so this does not occur for them. The paper's gamma = 0.99 rule would behave the same way, so this is a property of probability averaging with this model rather than of our implementation.
+
+### 5.4 Hallucination: wrong answers instead of abstaining
+We use a simple proxy: the share of questions where a method answers (does not say "unknown") and the answer is wrong. Each cell is abstain rate (m = 0) / wrong-but-answered at m = 0 / at m = 1, in %.
+
+| Method | Qwen2.5-1.5B | Qwen2.5-7B | Mistral-7B (n = 28) |
 |---|---|---|---|
-| Vanilla RAG | 2.2% | 19.6% | 84.8% |
-| Keyword aggregation (final) | 4.3% | 60.9% | 65.2% |
-| Keyword aggregation v1 (fixed threshold 3) | 71.7% | 13.0% | 13.0% |
-| Decoding aggregation | 4.3% | 43.5% | 52.2% |
+| Vanilla RAG | 2.2 / 19.6 / 84.8 | 8.2 / 16.3 / 46.9 | 3.6 / 21.4 / 42.9 |
+| Keyword aggregation | 4.3 / 60.9 / 65.2 | 6.1 / 34.7 / 44.9 | 3.6 / 42.9 / 53.6 |
+| Keyword aggregation v1 | 71.7 / 13.0 / 13.0 | 85.7 / 8.2 / 10.2 | 60.7 / 21.4 / 21.4 |
+| Decoding aggregation | 4.3 / 43.5 / 52.2 | 6.1 / 28.6 / 34.7 | 32.1 / 28.6 / 32.1 |
 
-Reading:
-- Without an attack, isolate-then-aggregate does **not** reduce unsupported answers in our setting: both final RobustRAG variants answer wrongly more often than vanilla RAG, because they are less accurate and rarely abstain.
-- Under one poisoned passage, vanilla RAG's wrong answers jump to 85% (most of them the attacker's answer), while the defenses stay lower (52-65%).
-- The strict fixed threshold (v1) has the fewest wrong answers (13%) because it abstains on 72% of questions. Abstaining is the mechanism that suppresses hallucination here, and it costs most of the correct answers. A dedicated hallucination check (for example, verifying the final answer against the passages with an entailment model) is future work; we did not implement one.
+Without attack, isolate-then-aggregate does **not** reduce unsupported answers: the final RobustRAG variants rarely abstain and are less accurate than vanilla RAG, so they answer wrongly more often (e.g. 35% vs 16% for Qwen2.5-7B keyword vs vanilla). Under one poisoned passage they are better than vanilla at 1.5B and comparable or better at 7B, mostly because vanilla's wrong answers are the attacker's. The strict threshold (v1) has the fewest wrong answers in every model because it abstains on 61-86% of questions. In our data, abstaining is the mechanism that suppresses hallucination, and it costs most of the correct answers. The proxy is coarse: substring matching counts partially correct answers (e.g. "terraced housing" for "terraces") as wrong.
 
-## 6. Attempted extension: thresholded recency for temporal conflicts
-**Problem.** Facts change ("who is the current head coach?"). Passages dated in the past were correct for their date, so majority voting can return a stale answer. Naive recency (newest date wins) fixes this but gives the attacker an easy win.
+## 6. Extension: thresholded recency for temporal conflicts
+**Problem.** Facts change ("who is the current head coach?"). Passages dated in the past were correct for their date, so majority voting can return a stale answer. "Newest date wins" fixes this, but one injected passage with a fake newer date then decides the answer.
 
-**Method.**
-1. *Claim extraction and date parsing:* each isolated passage yields a claim (answer, date). The answer comes from the LLM; the date is parsed from the passage in three formats (`March 4, 2023`, `4 Mar 2023`, `2023-03-04`). The generator writes exactly these formats, so the parser's success here is by construction.
-2. *Eligibility:* an answer is eligible only if at least B+1 passages support it (B = assumed adversary budget; B = 2).
-3. *Robust dating:* each eligible answer is dated by the (B+1)-th newest date among its supporters; the newest eligible answer wins.
+**Method.** (1) *Claims:* each isolated passage yields (answer, date); the answer comes from the LLM and the date is parsed from the passage (`March 4, 2023`, `4 Mar 2023`, `2023-03-04`). (2) *Eligibility:* an answer needs at least B+1 supporting passages (B = assumed adversary budget, here 2). (3) *Robust dating:* each eligible answer is dated by the (B+1)-th newest date among its supporters, and the newest eligible answer wins.
 
-**Guarantee (sketch, not a full proof).** Assume claims are extracted correctly. An attacker with at most B passages (a) cannot make a fabricated answer eligible, since it needs B+1 supporters, and (b) cannot make an eligible answer look newer than its newest clean supporting date, since at most B of its dates are forged, so the (B+1)-th newest is a clean date. Hence the output is an answer backed by clean passages, chosen by clean dates. It does *not* guarantee the current answer is chosen: if the current answer has at most B clean supporters in the retrieved set (for example, very recent news), the rule falls back to an older answer. That case is not tested here.
+**Guarantee (sketch).** If claims are extracted correctly, an attacker with at most B passages (a) cannot make a fabricated answer eligible, and (b) cannot make an eligible answer look newer than one of its clean supporters, because at most B of its dates are forged, so the (B+1)-th newest is clean. The output is therefore backed by clean passages and chosen by clean dates. It does not guarantee the *current* answer: if the current answer has at most B clean supporters (very recent news), the rule falls back to an older answer; this case is not tested. Our first version (v1) dated an answer by its newest supporter, which one forged date on the stale answer breaks (Attack B).
 
-**Why robust dating matters.** Our first version (v1) dated an answer by its newest supporter. An attacker can then re-date the stale answer (which already has enough clean supporters) with one fake 2025 passage, and v1 picks it. Attack B below tests exactly this.
-
-**Data** (synthetic, 40 questions, invented organizations and people so the LLM cannot rely on memory). Each question has 4+3 or 3+4 old/new supporting passages (old: 2019-2021, new: 2023-2024), the rest irrelevant. The new-answer passages are placed above the old ones, so injected passages push out old or irrelevant passages, never new ones (favourable to all recency methods). Attack A adds m passages claiming a third, fabricated name dated 2025. Attack B adds m passages claiming the stale answer dated 2025. Figure: `fig_temporal.png` (lines that coincide hide each other).
-
-Accuracy on the current answer:
+**Data and attacks.** 40 synthetic questions with invented people and organizations, so the LLM cannot answer from memory. Each has 4+3 or 3+4 passages for the old (2019-2021) and new (2023-2024) answer plus irrelevant passages. Attack A injects m passages for a fabricated name dated 2025; Attack B injects m passages re-dating the stale answer to 2025. Figure: `fig_temporal.png`.
 
 | Attack | m | Majority vote | Naive recency | Thresholded v1 (newest date) | Thresholded, robust date (ours) |
 |---|---|---|---|---|---|
 | A: fabricated name | 0 | 45% | 100% | 100% | 100% |
-| | 1 | 45% | 0% | 100% | 100% |
-| | 2 | 45% | 0% | 100% | 100% |
+| | 1-2 | 45% | 0% | 100% | 100% |
 | | 3 (> B) | 45% | 0% | 0% | 0% |
 | B: stale answer re-dated | 0 | 45% | 100% | 100% | 100% |
-| | 1 | 0% | 0% | 0% | 100% |
-| | 2 | 0% | 0% | 0% | 100% |
+| | 1-2 | 0% | 0% | 0% | 100% |
 | | 3 (> B) | 0% | 0% | 0% | 0% |
 
-Reading: only the robust-date rule resists both attacks, and it breaks exactly when the attacker exceeds the budget (m = 3 = B+1). Majority vote picks the stale answer whenever the old answer has more passages (55% of questions here). The numbers are all-or-nothing because the passages are templated and the LLM extracts names essentially perfectly; this shows the decision rule behaves as argued, not how it performs on real data.
+Only the robust-date rule resists both attacks, and it fails exactly when the attacker exceeds the budget (m = B+1). Majority vote returns the stale answer whenever it has more passages (55% of questions). **All three models give identical tables**: the passages are templated and every model extracts the names essentially perfectly. This confirms that the decision rule behaves as argued, independent of the LLM, but says nothing about real, noisy temporal data.
 
 ## 7. Limitations
-- Small samples (46 and 40 questions), one seed, no confidence intervals.
-- A 1.5B local LLM instead of the paper's 7B models.
-- Synthetic redundant evidence in the recreation; fully synthetic, templated temporal data.
-- No real certification; the grey curve is a heuristic.
-- Keyword extraction approximates the paper's (stop-word list instead of POS tags, no lemmatization); clean accuracy remains well below vanilla.
-- The main results come from one run whose question list is stored in `results.json`; rerunning `robustrag.py` after the determinism fix selects a different (but reproducible) set of questions.
-- The temporal guarantee assumes correct claim extraction, and the setup never tests a current answer with few supporters.
-- Hallucination is only measured with a coarse proxy; no hallucination-specific defense was built.
+- **Small samples:** 46-49 poisoning questions and 40 temporal questions, one seed; 95% intervals are about ±13 points.
+- **Data:** SQuAD with synthetic paraphrased evidence instead of the paper's search-based NQ/RealtimeQA; fully synthetic temporal data. Absolute numbers are not directly comparable with the paper.
+- **Incomplete runs:** a GPU hardware failure stopped the 20-token Mistral rerun at 28 questions and prevented certification for Mistral-7B and the 1.5B model. Llama2-7B-Chat (gated) was not run.
+- **Model-specific prompting:** Mistral needed a stricter prompt and answer clean-up, so its numbers are not a pure model-size comparison.
+- **Approximations:** keyword extraction without POS tags or lemmatization; certification only for keyword aggregation (not decoding, Algorithm 4), with a W_C cap of 10.
+- **Hallucination** is measured with a coarse proxy; no hallucination-specific defense was built.
 
 ## 8. Conclusion
-On adversarial poisoning, our small-scale recreation reproduces RobustRAG's main empirical finding: isolating passages and aggregating the answers keeps a single poisoned passage from taking over the answer (attack success 11-13% vs 85% for vanilla RAG). It does not reproduce the paper's small loss in clean accuracy, and it exposes a clear trade-off in the keyword threshold: the paper's adaptive threshold keeps more correct answers, while a fixed, higher threshold resists more poisoned passages. On hallucination, isolation alone did not reduce wrong answers in our setting; abstaining did, at a high cost in correct answers. On temporal conflicts, we showed that both plain voting and naive recency fail, that a first thresholded version is still broken by re-dating a stale answer, and that dating each answer by its (B+1)-th newest supporter resists both attacks up to the assumed budget. Natural next steps are running the same code with 7B models and real time-stamped corpora, implementing the paper's certification, testing current answers with few supporters, and adding an answer-verification step against hallucination.
+Our recreation reproduces RobustRAG's central empirical claim: isolating passages and aggregating the answers stops a single poisoned passage from taking over the answer. At 7B the attack success rates (vanilla 31-41%, RobustRAG 4-6%) are close to the paper's (37%, 7-12%), and the clean-accuracy cost of the defense, large at 1.5B, shrinks substantially. Implementing the certification procedure gave 35% certified accuracy against one corrupted passage (paper: 26%), but only after fixing a case in which Algorithm 3 as written over-certifies; we also showed that with the paper's alpha and k no question can be certified against two corrupted passages. Our analysis identifies distractor majorities in retrieval as the main reason RobustRAG loses clean accuracy, and shows that against hallucination isolation alone does not help while abstention does, at a high price. For temporal conflicts, dating each answer by its (B+1)-th newest supporter resists both fabricated and re-dated answers up to the assumed budget, independently of the LLM. Next steps are completing the interrupted runs, certifying decoding aggregation, evaluating on real time-stamped corpora, and adding an answer-verification step against hallucination.
 
-## 9. Reproduce
+## 9. Reproducibility
+All code, per-question outputs and figures are in the repository. Main entry points: `src/robustrag.py` (vanilla, keyword v1 and paper-faithful keyword aggregation, decoding aggregation, attack), `src/certify.py`, `src/temporal.py`, `src/hallucination.py`, `src/plots_models.py`, `src/make_pdf.py`. Models are chosen with environment variables; the same 50 questions are reused via `results.json`:
 ```
-pip install torch transformers datasets sentence-transformers matplotlib reportlab pymupdf
-python src/robustrag.py 50 results.json   # about 75 min on an RTX 3050 4GB
-python src/keyword_rerun.py 50            # paper-faithful keyword aggregation, about 10 min
-python src/plots.py results.json          # merges keyword results, drops invalid targets, writes fig_main.png
-python src/temporal.py 40                 # fig_temporal.png, results_temporal.json
-python src/make_pdf.py                    # REPORT.pdf from REPORT.md
+export RR_QUESTIONS=results.json RR_DTYPE=bfloat16
+# Qwen2.5-7B
+export RR_LLM=Qwen/Qwen2.5-7B-Instruct RR_TAG=_qwen7b
+python src/robustrag.py 50
+python src/temporal.py 40
+python src/certify.py 50
+# Mistral-7B (same three scripts)
+export RR_LLM=mistralai/Mistral-7B-Instruct-v0.2
+export RR_TAG=_mistral7b RR_PROMPT=strict
+python src/robustrag.py 50
+# figures, tables, PDF
+python src/plots_models.py
+python src/hallucination.py results_qwen7b.json
+python src/make_pdf.py
 ```
+The 1.5B run (`results.json`, about 75 minutes on an RTX 3050) uses the defaults; a 7B run takes 4-10 minutes on an RTX PRO 6000.
 
 ## References
 1. C. Xiang, T. Wu, Z. Zhong, D. Wagner, D. Chen, P. Mittal. Certifiably Robust RAG against Retrieval Corruption. arXiv:2405.15556, 2024.
 2. W. Zou, R. Geng, B. Wang, J. Jia. PoisonedRAG: Knowledge Corruption Attacks to Retrieval-Augmented Generation of Large Language Models. arXiv:2402.07867, 2024.
-3. P. Lewis et al. Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. NeurIPS 2020 (arXiv:2005.11401).
+3. P. Lewis et al. Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. NeurIPS 2020.
 4. P. Rajpurkar, J. Zhang, K. Lopyrev, P. Liang. SQuAD: 100,000+ Questions for Machine Comprehension of Text. EMNLP 2016.
 5. Qwen Team. Qwen2.5 Technical Report. arXiv:2412.15115, 2024.
-6. N. Reimers, I. Gurevych. Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks. EMNLP 2019 (model used: sentence-transformers/all-MiniLM-L6-v2).
+6. A. Q. Jiang et al. Mistral 7B. arXiv:2310.06825, 2023.
+7. N. Reimers, I. Gurevych. Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks. EMNLP 2019.

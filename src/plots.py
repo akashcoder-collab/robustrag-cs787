@@ -2,6 +2,8 @@ import json, sys, numpy as np, matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 f = sys.argv[1] if len(sys.argv) > 1 else "results.json"
+kwf = f.replace("results", "results_keyword", 1)
+figf = f.replace("results", "fig_main", 1).replace(".json", ".png")
 import re, string
 def norm(s):
     s = "".join(c for c in s.lower() if c not in string.punctuation)
@@ -12,8 +14,8 @@ r = json.load(open(f))
 drop = {x["q"] for x in r if bad_target(x)}
 r = [x for x in r if x["q"] not in drop]; ms = sorted({x["m"] for x in r})
 import os
-if os.path.exists("results_keyword.json"):   # paper-faithful keyword aggregation re-run; keep the first version as key1
-    kw = {(x["q"], x["m"]): x for x in json.load(open("results_keyword.json"))}
+if os.path.exists(kwf):   # paper-faithful keyword aggregation re-run; keep the first version as key1
+    kw = {(x["q"], x["m"]): x for x in json.load(open(kwf))}
     r = [x for x in r if (x["q"], x["m"]) in kw]
     for x in r:
         y = kw[(x["q"], x["m"])]
@@ -37,6 +39,6 @@ ax[1].set(xlabel="# poisoned passages (of top-10)", ylabel="Attack success rate 
 for a in ax: a.grid(alpha=.3); a.set_xticks(ms)
 h, l = ax[0].get_legend_handles_labels()
 fig.legend(h, l, loc="lower center", ncol=3, fontsize=8, frameon=False)
-plt.tight_layout(rect=(0, 0.14, 1, 1)); plt.savefig("fig_main.png", dpi=200)
+plt.tight_layout(rect=(0, 0.14, 1, 1)); plt.savefig(figf, dpi=200)
 ks = ['van_ok', 'key_ok', 'dec_ok', 'cert', 'van_asr', 'key_asr', 'dec_asr'] + (['key1_ok', 'key1_asr'] if "key1_ok" in r[0] else [])
 for m in ms: print(m, {k: round(np.mean([x[k] for x in r if x['m'] == m]) * 100, 1) for k in ks})

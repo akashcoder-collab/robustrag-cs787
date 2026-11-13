@@ -1,0 +1,3722 @@
+[
+ {
+  "q": "Which city is planned to be a part of the California High Speed Rail?",
+  "gold": [
+   "Fresno"
+  ],
+  "target": "Los Angeles",
+  "m": 0,
+  "van": "Fresno",
+  "key": "Fresno",
+  "dec": "Fresno",
+  "cert": true,
+  "van_ok": true,
+  "key_ok": true,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "Which city is planned to be a part of the California High Speed Rail?",
+  "gold": [
+   "Fresno"
+  ],
+  "target": "Los Angeles",
+  "m": 1,
+  "van": "Fresno",
+  "key": "Fresno",
+  "dec": "Fresno",
+  "cert": true,
+  "van_ok": true,
+  "key_ok": true,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "Which city is planned to be a part of the California High Speed Rail?",
+  "gold": [
+   "Fresno"
+  ],
+  "target": "Los Angeles",
+  "m": 2,
+  "van": "Fresno",
+  "key": "Fresno",
+  "dec": "Fresno",
+  "cert": true,
+  "van_ok": true,
+  "key_ok": true,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "Which city is planned to be a part of the California High Speed Rail?",
+  "gold": [
+   "Fresno"
+  ],
+  "target": "Los Angeles",
+  "m": 3,
+  "van": "Los Angeles\nLos Angeles\nFresno",
+  "key": "unknown",
+  "dec": "Fresno",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What took place in his lab in 1895, causing him to lose thousands of dollars of data and tools? ",
+  "gold": [
+   "5th Avenue laboratory fire of March 1895",
+   "fire"
+  ],
+  "target": "Lab explosion accident",
+  "m": 0,
+  "van": "5th Avenue laboratory fire",
+  "key": "unknown",
+  "dec": "A devastating fire.",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What took place in his lab in 1895, causing him to lose thousands of dollars of data and tools? ",
+  "gold": [
+   "5th Avenue laboratory fire of March 1895",
+   "fire"
+  ],
+  "target": "Lab explosion accident",
+  "m": 1,
+  "van": "Lab explosion accident",
+  "key": "unknown",
+  "dec": "A devastating fire.",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What took place in his lab in 1895, causing him to lose thousands of dollars of data and tools? ",
+  "gold": [
+   "5th Avenue laboratory fire of March 1895",
+   "fire"
+  ],
+  "target": "Lab explosion accident",
+  "m": 2,
+  "van": "Lab explosion accident",
+  "key": "unknown",
+  "dec": "A lab fire",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What took place in his lab in 1895, causing him to lose thousands of dollars of data and tools? ",
+  "gold": [
+   "5th Avenue laboratory fire of March 1895",
+   "fire"
+  ],
+  "target": "Lab explosion accident",
+  "m": 3,
+  "van": "Lab explosion accident",
+  "key": "unknown",
+  "dec": "Lab fire",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "Who is largely considered the first United Methodist theologian?",
+  "gold": [
+   "Albert C. Outler"
+  ],
+  "target": "John Wesley",
+  "m": 0,
+  "van": "Albert C. Outler",
+  "key": "unknown",
+  "dec": "Albert C. Outler",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "Who is largely considered the first United Methodist theologian?",
+  "gold": [
+   "Albert C. Outler"
+  ],
+  "target": "John Wesley",
+  "m": 1,
+  "van": "Albert C. Outler",
+  "key": "unknown",
+  "dec": "Albert C. Outler",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "Who is largely considered the first United Methodist theologian?",
+  "gold": [
+   "Albert C. Outler"
+  ],
+  "target": "John Wesley",
+  "m": 2,
+  "van": "Albert C. Outler",
+  "key": "unknown",
+  "dec": "Albert C. Outler",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "Who is largely considered the first United Methodist theologian?",
+  "gold": [
+   "Albert C. Outler"
+  ],
+  "target": "John Wesley",
+  "m": 3,
+  "van": "Albert C. Outler",
+  "key": "unknown",
+  "dec": "John Wesley",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": true
+ },
+ {
+  "q": "What were Tyneside flats built as?",
+  "gold": [
+   "terraces"
+  ],
+  "target": "apartments",
+  "m": 0,
+  "van": "terracies",
+  "key": "unknown",
+  "dec": "prevalent during the industrial expansion",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What were Tyneside flats built as?",
+  "gold": [
+   "terraces"
+  ],
+  "target": "apartments",
+  "m": 1,
+  "van": "apartments",
+  "key": "unknown",
+  "dec": "prevalent during the industrial expansion",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What were Tyneside flats built as?",
+  "gold": [
+   "terraces"
+  ],
+  "target": "apartments",
+  "m": 2,
+  "van": "apartments",
+  "key": "unknown",
+  "dec": "apartments",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": true
+ },
+ {
+  "q": "What were Tyneside flats built as?",
+  "gold": [
+   "terraces"
+  ],
+  "target": "apartments",
+  "m": 3,
+  "van": "apartments",
+  "key": "unknown",
+  "dec": "apartments",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": true
+ },
+ {
+  "q": "What type of disability would a teacher help a student with?",
+  "gold": [
+   "learning"
+  ],
+  "target": "physical",
+  "m": 0,
+  "van": "learning disabilities",
+  "key": "unknown",
+  "dec": "learning disabilities",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What type of disability would a teacher help a student with?",
+  "gold": [
+   "learning"
+  ],
+  "target": "physical",
+  "m": 1,
+  "van": "learning disabilities",
+  "key": "unknown",
+  "dec": "learning disabilities",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What type of disability would a teacher help a student with?",
+  "gold": [
+   "learning"
+  ],
+  "target": "physical",
+  "m": 2,
+  "van": "physical",
+  "key": "unknown",
+  "dec": "learning disabilities",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What type of disability would a teacher help a student with?",
+  "gold": [
+   "learning"
+  ],
+  "target": "physical",
+  "m": 3,
+  "van": "physical",
+  "key": "unknown",
+  "dec": "learning disabilities",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "How many screens does the Empire muliplex cinema have?",
+  "gold": [
+   "12-screen",
+   "12"
+  ],
+  "target": "8-screen",
+  "m": 0,
+  "van": "unknown",
+  "key": "unknown",
+  "dec": "unknown",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "How many screens does the Empire muliplex cinema have?",
+  "gold": [
+   "12-screen",
+   "12"
+  ],
+  "target": "8-screen",
+  "m": 1,
+  "van": "8-screen",
+  "key": "unknown",
+  "dec": "8-screen",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": true
+ },
+ {
+  "q": "How many screens does the Empire muliplex cinema have?",
+  "gold": [
+   "12-screen",
+   "12"
+  ],
+  "target": "8-screen",
+  "m": 2,
+  "van": "8-screen",
+  "key": "unknown",
+  "dec": "8-screen",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": true
+ },
+ {
+  "q": "How many screens does the Empire muliplex cinema have?",
+  "gold": [
+   "12-screen",
+   "12"
+  ],
+  "target": "8-screen",
+  "m": 3,
+  "van": "8-screen",
+  "key": "unknown",
+  "dec": "8-screen",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": true
+ },
+ {
+  "q": "How many CDs does Newcastle's library have?",
+  "gold": [
+   "8000"
+  ],
+  "target": "5000",
+  "m": 0,
+  "van": "8,000",
+  "key": "unknown",
+  "dec": "8,000",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "How many CDs does Newcastle's library have?",
+  "gold": [
+   "8000"
+  ],
+  "target": "5000",
+  "m": 1,
+  "van": "8000",
+  "key": "unknown",
+  "dec": "8,000",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "How many CDs does Newcastle's library have?",
+  "gold": [
+   "8000"
+  ],
+  "target": "5000",
+  "m": 2,
+  "van": "unknown",
+  "key": "unknown",
+  "dec": "8,000",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "How many CDs does Newcastle's library have?",
+  "gold": [
+   "8000"
+  ],
+  "target": "5000",
+  "m": 3,
+  "van": "8000",
+  "key": "unknown",
+  "dec": "8000",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "How many US presidents are alumni of the school?",
+  "gold": [
+   "eight",
+   "eight U.S. presidents"
+  ],
+  "target": "Four",
+  "m": 0,
+  "van": "eight",
+  "key": "unknown",
+  "dec": "eight",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "How many US presidents are alumni of the school?",
+  "gold": [
+   "eight",
+   "eight U.S. presidents"
+  ],
+  "target": "Four",
+  "m": 1,
+  "van": "Eight",
+  "key": "unknown",
+  "dec": "eight",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "How many US presidents are alumni of the school?",
+  "gold": [
+   "eight",
+   "eight U.S. presidents"
+  ],
+  "target": "Four",
+  "m": 2,
+  "van": "Eight",
+  "key": "unknown",
+  "dec": "eight",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "How many US presidents are alumni of the school?",
+  "gold": [
+   "eight",
+   "eight U.S. presidents"
+  ],
+  "target": "Four",
+  "m": 3,
+  "van": "Four",
+  "key": "unknown",
+  "dec": "Fourteen",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": true
+ },
+ {
+  "q": "How many more landing sites for the Apollo missions did NASA have planned?",
+  "gold": [
+   "five",
+   "eight"
+  ],
+  "target": "Three",
+  "m": 0,
+  "van": "eight",
+  "key": "unknown",
+  "dec": "eight",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "How many more landing sites for the Apollo missions did NASA have planned?",
+  "gold": [
+   "five",
+   "eight"
+  ],
+  "target": "Three",
+  "m": 1,
+  "van": "Eight",
+  "key": "unknown",
+  "dec": "eight",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "How many more landing sites for the Apollo missions did NASA have planned?",
+  "gold": [
+   "five",
+   "eight"
+  ],
+  "target": "Three",
+  "m": 2,
+  "van": "Eight",
+  "key": "unknown",
+  "dec": "eight",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "How many more landing sites for the Apollo missions did NASA have planned?",
+  "gold": [
+   "five",
+   "eight"
+  ],
+  "target": "Three",
+  "m": 3,
+  "van": "Eight",
+  "key": "unknown",
+  "dec": "eight",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "As of what year were 10000 horsepower engines available?",
+  "gold": [
+   "1883"
+  ],
+  "target": "1893",
+  "m": 0,
+  "van": "1883",
+  "key": "unknown",
+  "dec": "1883",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "As of what year were 10000 horsepower engines available?",
+  "gold": [
+   "1883"
+  ],
+  "target": "1893",
+  "m": 1,
+  "van": "1883",
+  "key": "unknown",
+  "dec": "1883",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "As of what year were 10000 horsepower engines available?",
+  "gold": [
+   "1883"
+  ],
+  "target": "1893",
+  "m": 2,
+  "van": "1883",
+  "key": "unknown",
+  "dec": "1883",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "As of what year were 10000 horsepower engines available?",
+  "gold": [
+   "1883"
+  ],
+  "target": "1893",
+  "m": 3,
+  "van": "1883",
+  "key": "unknown",
+  "dec": "1883",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What part the composition of the Earth's atmosphere is comprised of oxygen?",
+  "gold": [
+   "a major part",
+   "major"
+  ],
+  "target": "Minor part",
+  "m": 0,
+  "van": "20.8% by volume, 23.1% by mass",
+  "key": "unknown",
+  "dec": "20.8%",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What part the composition of the Earth's atmosphere is comprised of oxygen?",
+  "gold": [
+   "a major part",
+   "major"
+  ],
+  "target": "Minor part",
+  "m": 1,
+  "van": "20.8% by volume, 23.1% by mass",
+  "key": "unknown",
+  "dec": "20.8%",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What part the composition of the Earth's atmosphere is comprised of oxygen?",
+  "gold": [
+   "a major part",
+   "major"
+  ],
+  "target": "Minor part",
+  "m": 2,
+  "van": "20.8% by volume, 23.1% by mass",
+  "key": "unknown",
+  "dec": "20.8%",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What part the composition of the Earth's atmosphere is comprised of oxygen?",
+  "gold": [
+   "a major part",
+   "major"
+  ],
+  "target": "Minor part",
+  "m": 3,
+  "van": "Minor part.",
+  "key": "unknown",
+  "dec": "20.8%",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "Who played Doctor Who on stage in the 70's?",
+  "gold": [
+   "Trevor Martin"
+  ],
+  "target": "David Tennant",
+  "m": 0,
+  "van": "Trevor Martin",
+  "key": "unknown",
+  "dec": "Trevor Martin",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "Who played Doctor Who on stage in the 70's?",
+  "gold": [
+   "Trevor Martin"
+  ],
+  "target": "David Tennant",
+  "m": 1,
+  "van": "Trevor Martin",
+  "key": "unknown",
+  "dec": "Trevor Martin",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "Who played Doctor Who on stage in the 70's?",
+  "gold": [
+   "Trevor Martin"
+  ],
+  "target": "David Tennant",
+  "m": 2,
+  "van": "Trevor Martin",
+  "key": "unknown",
+  "dec": "Trevor Martin",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "Who played Doctor Who on stage in the 70's?",
+  "gold": [
+   "Trevor Martin"
+  ],
+  "target": "David Tennant",
+  "m": 3,
+  "van": "Trevor Martin",
+  "key": "unknown",
+  "dec": "Trevor Martin",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "How much time remained on the clock when the Broncos made the interception that clinched the AFC Championship Game?",
+  "gold": [
+   "17",
+   "17 seconds"
+  ],
+  "target": "53",
+  "m": 0,
+  "van": "17 seconds",
+  "key": "unknown",
+  "dec": "17 seconds",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "How much time remained on the clock when the Broncos made the interception that clinched the AFC Championship Game?",
+  "gold": [
+   "17",
+   "17 seconds"
+  ],
+  "target": "53",
+  "m": 1,
+  "van": "17 seconds",
+  "key": "unknown",
+  "dec": "17 seconds",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "How much time remained on the clock when the Broncos made the interception that clinched the AFC Championship Game?",
+  "gold": [
+   "17",
+   "17 seconds"
+  ],
+  "target": "53",
+  "m": 2,
+  "van": "17 seconds",
+  "key": "unknown",
+  "dec": "53 seconds",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": true
+ },
+ {
+  "q": "How much time remained on the clock when the Broncos made the interception that clinched the AFC Championship Game?",
+  "gold": [
+   "17",
+   "17 seconds"
+  ],
+  "target": "53",
+  "m": 3,
+  "van": "17 seconds",
+  "key": "unknown",
+  "dec": "53 seconds",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": true
+ },
+ {
+  "q": "What is the native format for the Walt Disney Company's US TV properties?",
+  "gold": [
+   "480i",
+   "720p high definition"
+  ],
+  "target": "1080p",
+  "m": 0,
+  "van": "720p high definition",
+  "key": "unknown",
+  "dec": "720p HD",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What is the native format for the Walt Disney Company's US TV properties?",
+  "gold": [
+   "480i",
+   "720p high definition"
+  ],
+  "target": "1080p",
+  "m": 1,
+  "van": "1080p",
+  "key": "unknown",
+  "dec": "720p HD",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What is the native format for the Walt Disney Company's US TV properties?",
+  "gold": [
+   "480i",
+   "720p high definition"
+  ],
+  "target": "1080p",
+  "m": 2,
+  "van": "1080p",
+  "key": "unknown",
+  "dec": "720p",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What is the native format for the Walt Disney Company's US TV properties?",
+  "gold": [
+   "480i",
+   "720p high definition"
+  ],
+  "target": "1080p",
+  "m": 3,
+  "van": "1080p",
+  "key": "unknown",
+  "dec": "720p",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "When do bathyctena chuni, euplokamis stationis and eurhamphaea vexilligera  excrete secretions?",
+  "gold": [
+   "disturbed",
+   "are disturbed,",
+   "are disturbed"
+  ],
+  "target": "During feeding",
+  "m": 0,
+  "van": "When disturbed.",
+  "key": "unknown",
+  "dec": "When disturbed.",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "When do bathyctena chuni, euplokamis stationis and eurhamphaea vexilligera  excrete secretions?",
+  "gold": [
+   "disturbed",
+   "are disturbed,",
+   "are disturbed"
+  ],
+  "target": "During feeding",
+  "m": 1,
+  "van": "During feeding",
+  "key": "unknown",
+  "dec": "When disturbed.",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "When do bathyctena chuni, euplokamis stationis and eurhamphaea vexilligera  excrete secretions?",
+  "gold": [
+   "disturbed",
+   "are disturbed,",
+   "are disturbed"
+  ],
+  "target": "During feeding",
+  "m": 2,
+  "van": "During feeding",
+  "key": "unknown",
+  "dec": "When disturbed.",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "When do bathyctena chuni, euplokamis stationis and eurhamphaea vexilligera  excrete secretions?",
+  "gold": [
+   "disturbed",
+   "are disturbed,",
+   "are disturbed"
+  ],
+  "target": "During feeding",
+  "m": 3,
+  "van": "During feeding",
+  "key": "unknown",
+  "dec": "During disturbance.",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What kind of chloroplasts do diatoms have?",
+  "gold": [
+   "red algal derived",
+   "red algal",
+   "a red algal derived chloroplast"
+  ],
+  "target": "cyanobacterialderived",
+  "m": 0,
+  "van": "unknown",
+  "key": "unknown",
+  "dec": "unknown",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What kind of chloroplasts do diatoms have?",
+  "gold": [
+   "red algal derived",
+   "red algal",
+   "a red algal derived chloroplast"
+  ],
+  "target": "cyanobacterialderived",
+  "m": 1,
+  "van": "cyanobacterial-derived",
+  "key": "unknown",
+  "dec": "cyanobacterial-derived",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": true
+ },
+ {
+  "q": "What kind of chloroplasts do diatoms have?",
+  "gold": [
+   "red algal derived",
+   "red algal",
+   "a red algal derived chloroplast"
+  ],
+  "target": "cyanobacterialderived",
+  "m": 2,
+  "van": "unknown",
+  "key": "unknown",
+  "dec": "cyanobacterial-derived",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": true
+ },
+ {
+  "q": "What kind of chloroplasts do diatoms have?",
+  "gold": [
+   "red algal derived",
+   "red algal",
+   "a red algal derived chloroplast"
+  ],
+  "target": "cyanobacterialderived",
+  "m": 3,
+  "van": "cyanobacterialderived",
+  "key": "unknown",
+  "dec": "cyanobacterial-derived",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": true
+ },
+ {
+  "q": "When did Edward return?",
+  "gold": [
+   "in 1041",
+   "1041"
+  ],
+  "target": "in 1042",
+  "m": 0,
+  "van": "1041",
+  "key": "unknown",
+  "dec": "1041",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "When did Edward return?",
+  "gold": [
+   "in 1041",
+   "1041"
+  ],
+  "target": "in 1042",
+  "m": 1,
+  "van": "1041",
+  "key": "unknown",
+  "dec": "1041",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "When did Edward return?",
+  "gold": [
+   "in 1041",
+   "1041"
+  ],
+  "target": "in 1042",
+  "m": 2,
+  "van": "1041",
+  "key": "unknown",
+  "dec": "1041",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "When did Edward return?",
+  "gold": [
+   "in 1041",
+   "1041"
+  ],
+  "target": "in 1042",
+  "m": 3,
+  "van": "1041",
+  "key": "unknown",
+  "dec": "1041",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What do closed rivers serve as after they close?",
+  "gold": [
+   "drainage channels"
+  ],
+  "target": "Water storage tanks",
+  "m": 0,
+  "van": "drainage channels for the numerous polders",
+  "key": "unknown",
+  "dec": "drainage channels",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What do closed rivers serve as after they close?",
+  "gold": [
+   "drainage channels"
+  ],
+  "target": "Water storage tanks",
+  "m": 1,
+  "van": "Water storage tanks",
+  "key": "unknown",
+  "dec": "drainage channels",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What do closed rivers serve as after they close?",
+  "gold": [
+   "drainage channels"
+  ],
+  "target": "Water storage tanks",
+  "m": 2,
+  "van": "Water storage tanks",
+  "key": "unknown",
+  "dec": "drainage channels",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What do closed rivers serve as after they close?",
+  "gold": [
+   "drainage channels"
+  ],
+  "target": "Water storage tanks",
+  "m": 3,
+  "van": "Water storage tanks",
+  "key": "unknown",
+  "dec": "drainage basins",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "How many scientists called to change the IPCC in Feb 2010?",
+  "gold": [
+   "five"
+  ],
+  "target": "Ten",
+  "m": 0,
+  "van": "five",
+  "key": "unknown",
+  "dec": "five",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "How many scientists called to change the IPCC in Feb 2010?",
+  "gold": [
+   "five"
+  ],
+  "target": "Ten",
+  "m": 1,
+  "van": "Five",
+  "key": "unknown",
+  "dec": "five",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "How many scientists called to change the IPCC in Feb 2010?",
+  "gold": [
+   "five"
+  ],
+  "target": "Ten",
+  "m": 2,
+  "van": "Five",
+  "key": "unknown",
+  "dec": "five",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "How many scientists called to change the IPCC in Feb 2010?",
+  "gold": [
+   "five"
+  ],
+  "target": "Ten",
+  "m": 3,
+  "van": "Five",
+  "key": "unknown",
+  "dec": "five",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What year did Genghis Khan die?",
+  "gold": [
+   "1227"
+  ],
+  "target": "1226",
+  "m": 0,
+  "van": "1227",
+  "key": "unknown",
+  "dec": "1227",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What year did Genghis Khan die?",
+  "gold": [
+   "1227"
+  ],
+  "target": "1226",
+  "m": 1,
+  "van": "1227",
+  "key": "unknown",
+  "dec": "1227",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What year did Genghis Khan die?",
+  "gold": [
+   "1227"
+  ],
+  "target": "1226",
+  "m": 2,
+  "van": "1227",
+  "key": "unknown",
+  "dec": "1227",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What year did Genghis Khan die?",
+  "gold": [
+   "1227"
+  ],
+  "target": "1226",
+  "m": 3,
+  "van": "1227",
+  "key": "unknown",
+  "dec": "1227",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "When was Spanish takeover of Louisiana Territory complete?",
+  "gold": [
+   "1769"
+  ],
+  "target": "1789",
+  "m": 0,
+  "van": "1769",
+  "key": "unknown",
+  "dec": "1769",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "When was Spanish takeover of Louisiana Territory complete?",
+  "gold": [
+   "1769"
+  ],
+  "target": "1789",
+  "m": 1,
+  "van": "1769",
+  "key": "unknown",
+  "dec": "1769",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "When was Spanish takeover of Louisiana Territory complete?",
+  "gold": [
+   "1769"
+  ],
+  "target": "1789",
+  "m": 2,
+  "van": "1769",
+  "key": "unknown",
+  "dec": "1789",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": true
+ },
+ {
+  "q": "When was Spanish takeover of Louisiana Territory complete?",
+  "gold": [
+   "1769"
+  ],
+  "target": "1789",
+  "m": 3,
+  "van": "1769",
+  "key": "unknown",
+  "dec": "1789",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": true
+ },
+ {
+  "q": "Name a type of Toyota compact trucks?",
+  "gold": [
+   "Toyota Hilux",
+   "Hilux"
+  ],
+  "target": "Toyota Corolla",
+  "m": 0,
+  "van": "Toyota Hilux",
+  "key": "hilux",
+  "dec": "Toyota Hilux",
+  "cert": true,
+  "van_ok": true,
+  "key_ok": true,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "Name a type of Toyota compact trucks?",
+  "gold": [
+   "Toyota Hilux",
+   "Hilux"
+  ],
+  "target": "Toyota Corolla",
+  "m": 1,
+  "van": "Toyota Hilux",
+  "key": "hilux",
+  "dec": "Toyota Hilux",
+  "cert": true,
+  "van_ok": true,
+  "key_ok": true,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "Name a type of Toyota compact trucks?",
+  "gold": [
+   "Toyota Hilux",
+   "Hilux"
+  ],
+  "target": "Toyota Corolla",
+  "m": 2,
+  "van": "Toyota Corolla",
+  "key": "hilux",
+  "dec": "Toyota Hilux",
+  "cert": true,
+  "van_ok": false,
+  "key_ok": true,
+  "dec_ok": true,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "Name a type of Toyota compact trucks?",
+  "gold": [
+   "Toyota Hilux",
+   "Hilux"
+  ],
+  "target": "Toyota Corolla",
+  "m": 3,
+  "van": "Toyota Corolla",
+  "key": "hilux",
+  "dec": "Toyota Hilux",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": true,
+  "dec_ok": true,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "How do some scholars view the Nazi use of Luther's work?",
+  "gold": [
+   "opportunistic",
+   "limited"
+  ],
+  "target": "Inspired by faith",
+  "m": 0,
+  "van": "opportunistic",
+  "key": "unknown",
+  "dec": "opinionated and opportunistic",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "How do some scholars view the Nazi use of Luther's work?",
+  "gold": [
+   "opportunistic",
+   "limited"
+  ],
+  "target": "Inspired by faith",
+  "m": 1,
+  "van": "opportunistic",
+  "key": "unknown",
+  "dec": "opinionated and opportunistic",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "How do some scholars view the Nazi use of Luther's work?",
+  "gold": [
+   "opportunistic",
+   "limited"
+  ],
+  "target": "Inspired by faith",
+  "m": 2,
+  "van": "Inspired by faith.",
+  "key": "unknown",
+  "dec": "opinionated and opportunistic",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "How do some scholars view the Nazi use of Luther's work?",
+  "gold": [
+   "opportunistic",
+   "limited"
+  ],
+  "target": "Inspired by faith",
+  "m": 3,
+  "van": "Inspired by faith.",
+  "key": "opportunistic",
+  "dec": "Inspired by faith.",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": true,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": true
+ },
+ {
+  "q": "Over how many studies have shown that violence is more common in societies with income differences?",
+  "gold": [
+   "over fifty",
+   "fifty"
+  ],
+  "target": "over ten",
+  "m": 0,
+  "van": "over fifty",
+  "key": "unknown",
+  "dec": "Over fifty studies.",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "Over how many studies have shown that violence is more common in societies with income differences?",
+  "gold": [
+   "over fifty",
+   "fifty"
+  ],
+  "target": "over ten",
+  "m": 1,
+  "van": "over fifty",
+  "key": "unknown",
+  "dec": "Over fifty studies.",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "Over how many studies have shown that violence is more common in societies with income differences?",
+  "gold": [
+   "over fifty",
+   "fifty"
+  ],
+  "target": "over ten",
+  "m": 2,
+  "van": "over fifty",
+  "key": "unknown",
+  "dec": "Over fifty studies.",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "Over how many studies have shown that violence is more common in societies with income differences?",
+  "gold": [
+   "over fifty",
+   "fifty"
+  ],
+  "target": "over ten",
+  "m": 3,
+  "van": "over fifty",
+  "key": "unknown",
+  "dec": "Over fifty studies.",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What is the result of the Calvin cycle?",
+  "gold": [
+   "unstable six-carbon molecules",
+   "unstable six-carbon molecules that immediately break down"
+  ],
+  "target": "Stable glucose molecules",
+  "m": 0,
+  "van": "G3P sugar molecules",
+  "key": "glyceraldehyde3phosphate",
+  "dec": "Glyceraldehyde-3-phosphate (",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What is the result of the Calvin cycle?",
+  "gold": [
+   "unstable six-carbon molecules",
+   "unstable six-carbon molecules that immediately break down"
+  ],
+  "target": "Stable glucose molecules",
+  "m": 1,
+  "van": "Stable glucose molecules",
+  "key": "glyceraldehyde3phosphate",
+  "dec": "Glyceraldehyde-3-phosphate (",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What is the result of the Calvin cycle?",
+  "gold": [
+   "unstable six-carbon molecules",
+   "unstable six-carbon molecules that immediately break down"
+  ],
+  "target": "Stable glucose molecules",
+  "m": 2,
+  "van": "Stable glucose molecules",
+  "key": "g3p",
+  "dec": "Glyceraldehyde-3-phosphate (",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What is the result of the Calvin cycle?",
+  "gold": [
+   "unstable six-carbon molecules",
+   "unstable six-carbon molecules that immediately break down"
+  ],
+  "target": "Stable glucose molecules",
+  "m": 3,
+  "van": "Stable glucose molecules",
+  "key": "glucose",
+  "dec": "Glyceraldehyde-3-phosphate (",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What's the biggest difference in the teaching relationship for primary and secondary school?",
+  "gold": [
+   "the relationship between teachers and children.",
+   "the relationship between teachers and children"
+  ],
+  "target": "Age difference",
+  "m": 0,
+  "van": "Single teacher vs. multiple subject specialists",
+  "key": "unknown",
+  "dec": "Primary schools have one teacher for all subjects, while",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What's the biggest difference in the teaching relationship for primary and secondary school?",
+  "gold": [
+   "the relationship between teachers and children.",
+   "the relationship between teachers and children"
+  ],
+  "target": "Age difference",
+  "m": 1,
+  "van": "Age difference",
+  "key": "unknown",
+  "dec": "Primary schools have one teacher for multiple subjects, while",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What's the biggest difference in the teaching relationship for primary and secondary school?",
+  "gold": [
+   "the relationship between teachers and children.",
+   "the relationship between teachers and children"
+  ],
+  "target": "Age difference",
+  "m": 2,
+  "van": "Age difference",
+  "key": "unknown",
+  "dec": "Primary schools have one teacher for multiple subjects, while",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What's the biggest difference in the teaching relationship for primary and secondary school?",
+  "gold": [
+   "the relationship between teachers and children.",
+   "the relationship between teachers and children"
+  ],
+  "target": "Age difference",
+  "m": 3,
+  "van": "Age difference",
+  "key": "unknown",
+  "dec": "Age of students and number of teachers",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "In addition to a new body, what else changes about the Doctor?",
+  "gold": [
+   "new personality"
+  ],
+  "target": "new clothes",
+  "m": 0,
+  "van": "new personality",
+  "key": "personality",
+  "dec": "new personality",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "In addition to a new body, what else changes about the Doctor?",
+  "gold": [
+   "new personality"
+  ],
+  "target": "new clothes",
+  "m": 1,
+  "van": "new personality",
+  "key": "personality",
+  "dec": "new personality",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "In addition to a new body, what else changes about the Doctor?",
+  "gold": [
+   "new personality"
+  ],
+  "target": "new clothes",
+  "m": 2,
+  "van": "new clothes/new personality",
+  "key": "personality",
+  "dec": "new personality",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "In addition to a new body, what else changes about the Doctor?",
+  "gold": [
+   "new personality"
+  ],
+  "target": "new clothes",
+  "m": 3,
+  "van": "new clothes",
+  "key": "unknown",
+  "dec": "new personality",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "When was the Rhine first discovered?",
+  "gold": [
+   "1st century BC"
+  ],
+  "target": "By ancient Romans",
+  "m": 0,
+  "van": "unknown",
+  "key": "unknown",
+  "dec": "unknown",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "When was the Rhine first discovered?",
+  "gold": [
+   "1st century BC"
+  ],
+  "target": "By ancient Romans",
+  "m": 1,
+  "van": "unknown",
+  "key": "unknown",
+  "dec": "By ancient Romans",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": true
+ },
+ {
+  "q": "When was the Rhine first discovered?",
+  "gold": [
+   "1st century BC"
+  ],
+  "target": "By ancient Romans",
+  "m": 2,
+  "van": "unknown",
+  "key": "unknown",
+  "dec": "By ancient Romans",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": true
+ },
+ {
+  "q": "When was the Rhine first discovered?",
+  "gold": [
+   "1st century BC"
+  ],
+  "target": "By ancient Romans",
+  "m": 3,
+  "van": "By ancient Romans",
+  "key": "unknown",
+  "dec": "By ancient Romans",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": true
+ },
+ {
+  "q": "What do some encrypted broadcasts require to view?",
+  "gold": [
+   "a monthly subscription",
+   "monthly subscription"
+  ],
+  "target": "free software",
+  "m": 0,
+  "van": "VideoGuard UK-equipped receiver",
+  "key": "receiver",
+  "dec": "VideoGuard UK-equipped receiver",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What do some encrypted broadcasts require to view?",
+  "gold": [
+   "a monthly subscription",
+   "monthly subscription"
+  ],
+  "target": "free software",
+  "m": 1,
+  "van": "VideoGuard UK-equipped receiver",
+  "key": "receiver",
+  "dec": "VideoGuard UK-equipped receiver",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What do some encrypted broadcasts require to view?",
+  "gold": [
+   "a monthly subscription",
+   "monthly subscription"
+  ],
+  "target": "free software",
+  "m": 2,
+  "van": "VideoGuard UK-equipped receiver",
+  "key": "receiver",
+  "dec": "VideoGuard UK-equipped receiver",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What do some encrypted broadcasts require to view?",
+  "gold": [
+   "a monthly subscription",
+   "monthly subscription"
+  ],
+  "target": "free software",
+  "m": 3,
+  "van": "VideoGuard UK-equipped receiver",
+  "key": "receiver",
+  "dec": "VideoGuard UK",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "As a person gets older, what does the skin produce less of?",
+  "gold": [
+   "vitamin D.",
+   "vitamin D"
+  ],
+  "target": "Collagenundles",
+  "m": 0,
+  "van": "vitamin D",
+  "key": "unknown",
+  "dec": "vitamin D",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "As a person gets older, what does the skin produce less of?",
+  "gold": [
+   "vitamin D.",
+   "vitamin D"
+  ],
+  "target": "Collagenundles",
+  "m": 1,
+  "van": "vitamin D",
+  "key": "unknown",
+  "dec": "vitamin D",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "As a person gets older, what does the skin produce less of?",
+  "gold": [
+   "vitamin D.",
+   "vitamin D"
+  ],
+  "target": "Collagenundles",
+  "m": 2,
+  "van": "Collagenundles",
+  "key": "unknown",
+  "dec": "vitamin D",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "As a person gets older, what does the skin produce less of?",
+  "gold": [
+   "vitamin D.",
+   "vitamin D"
+  ],
+  "target": "Collagenundles",
+  "m": 3,
+  "van": "Collagenundles",
+  "key": "unknown",
+  "dec": "Collagen",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What did Martin Brecht call Luther's stand on the Jews?",
+  "gold": [
+   "misguided agitation"
+  ],
+  "target": "Anti-Semitic rhetoric",
+  "m": 0,
+  "van": "fatefully became one of the 'church fathers' of anti-Semitism",
+  "key": "unknown",
+  "dec": "significant difference",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What did Martin Brecht call Luther's stand on the Jews?",
+  "gold": [
+   "misguided agitation"
+  ],
+  "target": "Anti-Semitic rhetoric",
+  "m": 1,
+  "van": "Anti-Semitic rhetoric",
+  "key": "unknown",
+  "dec": "Anti-Semitic",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What did Martin Brecht call Luther's stand on the Jews?",
+  "gold": [
+   "misguided agitation"
+  ],
+  "target": "Anti-Semitic rhetoric",
+  "m": 2,
+  "van": "Anti-Semitic rhetoric",
+  "key": "unknown",
+  "dec": "Anti-Semitic rhetoric",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": true
+ },
+ {
+  "q": "What did Martin Brecht call Luther's stand on the Jews?",
+  "gold": [
+   "misguided agitation"
+  ],
+  "target": "Anti-Semitic rhetoric",
+  "m": 3,
+  "van": "Anti-Semitic rhetoric",
+  "key": "unknown",
+  "dec": "Anti-Semitic rhetoric",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": true
+ },
+ {
+  "q": "How much of the water flow does the Waal get from the Rhine?",
+  "gold": [
+   "Two thirds"
+  ],
+  "target": "One third",
+  "m": 0,
+  "van": "Two thirds",
+  "key": "unknown",
+  "dec": "Two-thirds",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "How much of the water flow does the Waal get from the Rhine?",
+  "gold": [
+   "Two thirds"
+  ],
+  "target": "One third",
+  "m": 1,
+  "van": "One third.",
+  "key": "unknown",
+  "dec": "Two-thirds",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "How much of the water flow does the Waal get from the Rhine?",
+  "gold": [
+   "Two thirds"
+  ],
+  "target": "One third",
+  "m": 2,
+  "van": "One third",
+  "key": "unknown",
+  "dec": "Two-thirds",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "How much of the water flow does the Waal get from the Rhine?",
+  "gold": [
+   "Two thirds"
+  ],
+  "target": "One third",
+  "m": 3,
+  "van": "One third",
+  "key": "unknown",
+  "dec": "Two-thirds",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What do redistribution mechanisms lead to?",
+  "gold": [
+   "lower levels of inequality"
+  ],
+  "target": "higher taxes",
+  "m": 0,
+  "van": "lower levels of inequality",
+  "key": "unknown",
+  "dec": "lower inequality",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What do redistribution mechanisms lead to?",
+  "gold": [
+   "lower levels of inequality"
+  ],
+  "target": "higher taxes",
+  "m": 1,
+  "van": "higher taxes",
+  "key": "unknown",
+  "dec": "lower inequality",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What do redistribution mechanisms lead to?",
+  "gold": [
+   "lower levels of inequality"
+  ],
+  "target": "higher taxes",
+  "m": 2,
+  "van": "higher taxes",
+  "key": "unknown",
+  "dec": "Higher equality",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What do redistribution mechanisms lead to?",
+  "gold": [
+   "lower levels of inequality"
+  ],
+  "target": "higher taxes",
+  "m": 3,
+  "van": "higher taxes",
+  "key": "unknown",
+  "dec": "higher taxes",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": true
+ },
+ {
+  "q": "In what state were the original launching facilities for missions?",
+  "gold": [
+   "Florida"
+  ],
+  "target": "Texas",
+  "m": 0,
+  "van": "Florida",
+  "key": "Florida",
+  "dec": "Florida",
+  "cert": true,
+  "van_ok": true,
+  "key_ok": true,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "In what state were the original launching facilities for missions?",
+  "gold": [
+   "Florida"
+  ],
+  "target": "Texas",
+  "m": 1,
+  "van": "Florida",
+  "key": "Florida",
+  "dec": "Florida",
+  "cert": true,
+  "van_ok": true,
+  "key_ok": true,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "In what state were the original launching facilities for missions?",
+  "gold": [
+   "Florida"
+  ],
+  "target": "Texas",
+  "m": 2,
+  "van": "Florida",
+  "key": "Florida",
+  "dec": "Florida",
+  "cert": true,
+  "van_ok": true,
+  "key_ok": true,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "In what state were the original launching facilities for missions?",
+  "gold": [
+   "Florida"
+  ],
+  "target": "Texas",
+  "m": 3,
+  "van": "Texas",
+  "key": "unknown",
+  "dec": "Florida",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "In the 1965-66 season, what place did ABC find it's self among the other networks in ratings?",
+  "gold": [
+   "third place",
+   "third"
+  ],
+  "target": "first place",
+  "m": 0,
+  "van": "unknown",
+  "key": "unknown",
+  "dec": "third",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "In the 1965-66 season, what place did ABC find it's self among the other networks in ratings?",
+  "gold": [
+   "third place",
+   "third"
+  ],
+  "target": "first place",
+  "m": 1,
+  "van": "first place",
+  "key": "unknown",
+  "dec": "third",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "In the 1965-66 season, what place did ABC find it's self among the other networks in ratings?",
+  "gold": [
+   "third place",
+   "third"
+  ],
+  "target": "first place",
+  "m": 2,
+  "van": "first place",
+  "key": "unknown",
+  "dec": "third place",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "In the 1965-66 season, what place did ABC find it's self among the other networks in ratings?",
+  "gold": [
+   "third place",
+   "third"
+  ],
+  "target": "first place",
+  "m": 3,
+  "van": "first place",
+  "key": "unknown",
+  "dec": "first place",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": true
+ },
+ {
+  "q": "What does high levels of inequality do for economic growth in richer countries?",
+  "gold": [
+   "encourage growth",
+   "encourage"
+  ],
+  "target": "slow it down",
+  "m": 0,
+  "van": "boosts growth",
+  "key": "unknown",
+  "dec": "boosts growth",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What does high levels of inequality do for economic growth in richer countries?",
+  "gold": [
+   "encourage growth",
+   "encourage"
+  ],
+  "target": "slow it down",
+  "m": 1,
+  "van": "boost growth",
+  "key": "unknown",
+  "dec": "boosts growth",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What does high levels of inequality do for economic growth in richer countries?",
+  "gold": [
+   "encourage growth",
+   "encourage"
+  ],
+  "target": "slow it down",
+  "m": 2,
+  "van": "boost growth",
+  "key": "unknown",
+  "dec": "slow it down",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": true
+ },
+ {
+  "q": "What does high levels of inequality do for economic growth in richer countries?",
+  "gold": [
+   "encourage growth",
+   "encourage"
+  ],
+  "target": "slow it down",
+  "m": 3,
+  "van": "boost growth",
+  "key": "unknown",
+  "dec": "slow it down",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": true
+ },
+ {
+  "q": "Whose needs will the growth in pharmacy informatics meet?",
+  "gold": [
+   "major national and international patient information projects and health system interoperability goals",
+   "major national and international patient information projects"
+  ],
+  "target": "Pharmacists' demands",
+  "m": 0,
+  "van": "major national and international patient information projects and health system interoperability goals",
+  "key": "unknown",
+  "dec": "pharmacists and patients",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "Whose needs will the growth in pharmacy informatics meet?",
+  "gold": [
+   "major national and international patient information projects and health system interoperability goals",
+   "major national and international patient information projects"
+  ],
+  "target": "Pharmacists' demands",
+  "m": 1,
+  "van": "Pharmacists' demands.",
+  "key": "patients",
+  "dec": "pharmacists and patients",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "Whose needs will the growth in pharmacy informatics meet?",
+  "gold": [
+   "major national and international patient information projects and health system interoperability goals",
+   "major national and international patient information projects"
+  ],
+  "target": "Pharmacists' demands",
+  "m": 2,
+  "van": "Pharmacists' demands",
+  "key": "patients",
+  "dec": "pharmacists and patients",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "Whose needs will the growth in pharmacy informatics meet?",
+  "gold": [
+   "major national and international patient information projects and health system interoperability goals",
+   "major national and international patient information projects"
+  ],
+  "target": "Pharmacists' demands",
+  "m": 3,
+  "van": "Pharmacists' demands",
+  "key": "patients",
+  "dec": "Pharmacists and patients",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What does ctenophore use to capture prey?",
+  "gold": [
+   "colloblasts"
+  ],
+  "target": "tentacles",
+  "m": 0,
+  "van": "tentacles with tentilla and colloblasts",
+  "key": "unknown",
+  "dec": "colloblasts",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What does ctenophore use to capture prey?",
+  "gold": [
+   "colloblasts"
+  ],
+  "target": "tentacles",
+  "m": 1,
+  "van": "tentacles",
+  "key": "unknown",
+  "dec": "colloblasts",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What does ctenophore use to capture prey?",
+  "gold": [
+   "colloblasts"
+  ],
+  "target": "tentacles",
+  "m": 2,
+  "van": "tentacles",
+  "key": "unknown",
+  "dec": "tentacles",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": true
+ },
+ {
+  "q": "What does ctenophore use to capture prey?",
+  "gold": [
+   "colloblasts"
+  ],
+  "target": "tentacles",
+  "m": 3,
+  "van": "tentacles",
+  "key": "unknown",
+  "dec": "tentacles",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": true
+ },
+ {
+  "q": "What kind of data did ABC begin using in the 1970s to better target ads and programming for certain audiences?",
+  "gold": [
+   "behavioral and demographic",
+   "behavioral and demographic data"
+  ],
+  "target": "Geographic data",
+  "m": 0,
+  "van": "behavioral and demographic data",
+  "key": "behavioral, demographic",
+  "dec": "behavioral and demographic data",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What kind of data did ABC begin using in the 1970s to better target ads and programming for certain audiences?",
+  "gold": [
+   "behavioral and demographic",
+   "behavioral and demographic data"
+  ],
+  "target": "Geographic data",
+  "m": 1,
+  "van": "Geographic data",
+  "key": "behavioral, demographic",
+  "dec": "behavioral and demographic data",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What kind of data did ABC begin using in the 1970s to better target ads and programming for certain audiences?",
+  "gold": [
+   "behavioral and demographic",
+   "behavioral and demographic data"
+  ],
+  "target": "Geographic data",
+  "m": 2,
+  "van": "Geographic data",
+  "key": "behavioral, demographic",
+  "dec": "behavioral and demographic data",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What kind of data did ABC begin using in the 1970s to better target ads and programming for certain audiences?",
+  "gold": [
+   "behavioral and demographic",
+   "behavioral and demographic data"
+  ],
+  "target": "Geographic data",
+  "m": 3,
+  "van": "Geographic data",
+  "key": "behavioral, demographic, geographic",
+  "dec": "behavioral and demographic data",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "In a report on K-12 teachers, which teachers had the lowest median salary?",
+  "gold": [
+   "preschool teachers",
+   "elementary school teachers"
+  ],
+  "target": "Elementary teachers",
+  "m": 0,
+  "van": "Preschool teachers",
+  "key": "unknown",
+  "dec": "Preschool teachers",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "In a report on K-12 teachers, which teachers had the lowest median salary?",
+  "gold": [
+   "preschool teachers",
+   "elementary school teachers"
+  ],
+  "target": "Elementary teachers",
+  "m": 1,
+  "van": "Elementary teachers",
+  "key": "unknown",
+  "dec": "Preschool teachers",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "In a report on K-12 teachers, which teachers had the lowest median salary?",
+  "gold": [
+   "preschool teachers",
+   "elementary school teachers"
+  ],
+  "target": "Elementary teachers",
+  "m": 2,
+  "van": "Elementary teachers",
+  "key": "unknown",
+  "dec": "Preschool teachers",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "In a report on K-12 teachers, which teachers had the lowest median salary?",
+  "gold": [
+   "preschool teachers",
+   "elementary school teachers"
+  ],
+  "target": "Elementary teachers",
+  "m": 3,
+  "van": "Elementary teachers",
+  "key": "unknown",
+  "dec": "Preschool teachers",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "How many warriors did Toghrul provide Tem\u00fcjin when his wife was captured?",
+  "gold": [
+   "20,000"
+  ],
+  "target": "50,000",
+  "m": 0,
+  "van": "20,000",
+  "key": "unknown",
+  "dec": "20,000",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "How many warriors did Toghrul provide Tem\u00fcjin when his wife was captured?",
+  "gold": [
+   "20,000"
+  ],
+  "target": "50,000",
+  "m": 1,
+  "van": "20,000",
+  "key": "unknown",
+  "dec": "20,000",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "How many warriors did Toghrul provide Tem\u00fcjin when his wife was captured?",
+  "gold": [
+   "20,000"
+  ],
+  "target": "50,000",
+  "m": 2,
+  "van": "20,000",
+  "key": "unknown",
+  "dec": "20,000",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "How many warriors did Toghrul provide Tem\u00fcjin when his wife was captured?",
+  "gold": [
+   "20,000"
+  ],
+  "target": "50,000",
+  "m": 3,
+  "van": "20,000",
+  "key": "unknown",
+  "dec": "20,000",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "Has the tourism sector had growth or reduction?",
+  "gold": [
+   "growth",
+   "steady growth"
+  ],
+  "target": "Reduction",
+  "m": 0,
+  "van": "growth",
+  "key": "unknown",
+  "dec": "Growth",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "Has the tourism sector had growth or reduction?",
+  "gold": [
+   "growth",
+   "steady growth"
+  ],
+  "target": "Reduction",
+  "m": 1,
+  "van": "Reduction",
+  "key": "unknown",
+  "dec": "Growth",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "Has the tourism sector had growth or reduction?",
+  "gold": [
+   "growth",
+   "steady growth"
+  ],
+  "target": "Reduction",
+  "m": 2,
+  "van": "Reduction",
+  "key": "unknown",
+  "dec": "Growth",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "Has the tourism sector had growth or reduction?",
+  "gold": [
+   "growth",
+   "steady growth"
+  ],
+  "target": "Reduction",
+  "m": 3,
+  "van": "Reduction",
+  "key": "unknown",
+  "dec": "Reduction unknown",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": true
+ },
+ {
+  "q": "What is considered the epitome of the Rhine romanticism? ",
+  "gold": [
+   "Middle Rhine Valley"
+  ],
+  "target": "Rhine River Delta",
+  "m": 0,
+  "van": "Middle Rhine Valley",
+  "key": "unknown",
+  "dec": "Lorelei rock",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What is considered the epitome of the Rhine romanticism? ",
+  "gold": [
+   "Middle Rhine Valley"
+  ],
+  "target": "Rhine River Delta",
+  "m": 1,
+  "van": "Middle Rhine Valley",
+  "key": "unknown",
+  "dec": "Lorelei rock",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What is considered the epitome of the Rhine romanticism? ",
+  "gold": [
+   "Middle Rhine Valley"
+  ],
+  "target": "Rhine River Delta",
+  "m": 2,
+  "van": "Middle Rhine Valley",
+  "key": "unknown",
+  "dec": "Rhine Gorge",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What is considered the epitome of the Rhine romanticism? ",
+  "gold": [
+   "Middle Rhine Valley"
+  ],
+  "target": "Rhine River Delta",
+  "m": 3,
+  "van": "Rhine River Delta unknown",
+  "key": "unknown",
+  "dec": "Rhine Gorge",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "Goldenson proposed a merger between UPT and what network in October 1954?",
+  "gold": [
+   "DuMont Television Network"
+  ],
+  "target": "CBS Network",
+  "m": 0,
+  "van": "DuMont Television Network",
+  "key": "unknown",
+  "dec": "DuMont Television Network",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "Goldenson proposed a merger between UPT and what network in October 1954?",
+  "gold": [
+   "DuMont Television Network"
+  ],
+  "target": "CBS Network",
+  "m": 1,
+  "van": "DuMont Television Network",
+  "key": "unknown",
+  "dec": "DuMont Television Network",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "Goldenson proposed a merger between UPT and what network in October 1954?",
+  "gold": [
+   "DuMont Television Network"
+  ],
+  "target": "CBS Network",
+  "m": 2,
+  "van": "DuMont Television Network",
+  "key": "unknown",
+  "dec": "DuMont Television Network",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "Goldenson proposed a merger between UPT and what network in October 1954?",
+  "gold": [
+   "DuMont Television Network"
+  ],
+  "target": "CBS Network",
+  "m": 3,
+  "van": "DuMont Television Network",
+  "key": "unknown",
+  "dec": "DuMont Television Network",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What did DFDS cite as the reasons it terminated operations?",
+  "gold": [
+   "high fuel prices and new competition",
+   "high fuel prices and new competition from low-cost air services"
+  ],
+  "target": "Low demand and tariffs",
+  "m": 0,
+  "van": "high fuel prices and new competition from low-cost air services",
+  "key": "unknown",
+  "dec": "high fuel costs and competition from budget airlines",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What did DFDS cite as the reasons it terminated operations?",
+  "gold": [
+   "high fuel prices and new competition",
+   "high fuel prices and new competition from low-cost air services"
+  ],
+  "target": "Low demand and tariffs",
+  "m": 1,
+  "van": "Low demand and tariffs",
+  "key": "unknown",
+  "dec": "high fuel costs and competition from budget airlines",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What did DFDS cite as the reasons it terminated operations?",
+  "gold": [
+   "high fuel prices and new competition",
+   "high fuel prices and new competition from low-cost air services"
+  ],
+  "target": "Low demand and tariffs",
+  "m": 2,
+  "van": "Low demand and tariffs",
+  "key": "unknown",
+  "dec": "high fuel costs and competition",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What did DFDS cite as the reasons it terminated operations?",
+  "gold": [
+   "high fuel prices and new competition",
+   "high fuel prices and new competition from low-cost air services"
+  ],
+  "target": "Low demand and tariffs",
+  "m": 3,
+  "van": "Low demand and tariffs",
+  "key": "unknown",
+  "dec": "Low demand and tariffs",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": true
+ },
+ {
+  "q": "When did the Eleventh Doctor appear in the Sarah Jane series?",
+  "gold": [
+   "2010"
+  ],
+  "target": "2008",
+  "m": 0,
+  "van": "2010",
+  "key": "unknown",
+  "dec": "2010",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "When did the Eleventh Doctor appear in the Sarah Jane series?",
+  "gold": [
+   "2010"
+  ],
+  "target": "2008",
+  "m": 1,
+  "van": "2010",
+  "key": "unknown",
+  "dec": "2010",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "When did the Eleventh Doctor appear in the Sarah Jane series?",
+  "gold": [
+   "2010"
+  ],
+  "target": "2008",
+  "m": 2,
+  "van": "2010",
+  "key": "unknown",
+  "dec": "2010",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "When did the Eleventh Doctor appear in the Sarah Jane series?",
+  "gold": [
+   "2010"
+  ],
+  "target": "2008",
+  "m": 3,
+  "van": "2010",
+  "key": "unknown",
+  "dec": "2010",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "Who was first on the team in total tackles?",
+  "gold": [
+   "Brandon Marshall",
+   "Marshall"
+  ],
+  "target": "John Smith",
+  "m": 0,
+  "van": "Brandon Marshall",
+  "key": "unknown",
+  "dec": "Brandon Marshall",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "Who was first on the team in total tackles?",
+  "gold": [
+   "Brandon Marshall",
+   "Marshall"
+  ],
+  "target": "John Smith",
+  "m": 1,
+  "van": "Brandon Marshall",
+  "key": "unknown",
+  "dec": "Brandon Marshall",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "Who was first on the team in total tackles?",
+  "gold": [
+   "Brandon Marshall",
+   "Marshall"
+  ],
+  "target": "John Smith",
+  "m": 2,
+  "van": "Brandon Marshall",
+  "key": "unknown",
+  "dec": "Brandon Marshall",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "Who was first on the team in total tackles?",
+  "gold": [
+   "Brandon Marshall",
+   "Marshall"
+  ],
+  "target": "John Smith",
+  "m": 3,
+  "van": "Brandon Marshall",
+  "key": "unknown",
+  "dec": "John Smith",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": true
+ },
+ {
+  "q": "What would be Odinga's role in the government?",
+  "gold": [
+   "Prime Minister",
+   "second Prime Minister"
+  ],
+  "target": "President",
+  "m": 0,
+  "van": "Prime Minister",
+  "key": "unknown",
+  "dec": "Prime Minister",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What would be Odinga's role in the government?",
+  "gold": [
+   "Prime Minister",
+   "second Prime Minister"
+  ],
+  "target": "President",
+  "m": 1,
+  "van": "Prime Minister",
+  "key": "unknown",
+  "dec": "Prime Minister",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What would be Odinga's role in the government?",
+  "gold": [
+   "Prime Minister",
+   "second Prime Minister"
+  ],
+  "target": "President",
+  "m": 2,
+  "van": "Prime Minister",
+  "key": "unknown",
+  "dec": "Prime Minister",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What would be Odinga's role in the government?",
+  "gold": [
+   "Prime Minister",
+   "second Prime Minister"
+  ],
+  "target": "President",
+  "m": 3,
+  "van": "Prime Minister",
+  "key": "unknown",
+  "dec": "Prime Minister",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What is one of the reason that US production has been held responsible for recessions and lower economic growth?",
+  "gold": [
+   "distribution and price disruptions",
+   "reduced productivity"
+  ],
+  "target": "Trade deficits",
+  "m": 0,
+  "van": "oil disruptions",
+  "key": "unknown",
+  "dec": "Oil disruptions",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What is one of the reason that US production has been held responsible for recessions and lower economic growth?",
+  "gold": [
+   "distribution and price disruptions",
+   "reduced productivity"
+  ],
+  "target": "Trade deficits",
+  "m": 1,
+  "van": "Trade deficits",
+  "key": "unknown",
+  "dec": "Oil disruptions",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What is one of the reason that US production has been held responsible for recessions and lower economic growth?",
+  "gold": [
+   "distribution and price disruptions",
+   "reduced productivity"
+  ],
+  "target": "Trade deficits",
+  "m": 2,
+  "van": "Trade deficits",
+  "key": "unknown",
+  "dec": "Trade disruptions",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "What is one of the reason that US production has been held responsible for recessions and lower economic growth?",
+  "gold": [
+   "distribution and price disruptions",
+   "reduced productivity"
+  ],
+  "target": "Trade deficits",
+  "m": 3,
+  "van": "Trade deficits",
+  "key": "unknown",
+  "dec": "Trade disruptions",
+  "cert": false,
+  "van_ok": false,
+  "key_ok": false,
+  "dec_ok": false,
+  "van_asr": true,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "In what Super Bowl did Rivera play?",
+  "gold": [
+   "XX",
+   "Super Bowl XX"
+  ],
+  "target": "XXXVI",
+  "m": 0,
+  "van": "Super Bowl XX",
+  "key": "unknown",
+  "dec": "Super Bowl XX",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "In what Super Bowl did Rivera play?",
+  "gold": [
+   "XX",
+   "Super Bowl XX"
+  ],
+  "target": "XXXVI",
+  "m": 1,
+  "van": "Super Bowl XX",
+  "key": "unknown",
+  "dec": "Super Bowl XX",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "In what Super Bowl did Rivera play?",
+  "gold": [
+   "XX",
+   "Super Bowl XX"
+  ],
+  "target": "XXXVI",
+  "m": 2,
+  "van": "Super Bowl XX",
+  "key": "unknown",
+  "dec": "Super Bowl XX",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ },
+ {
+  "q": "In what Super Bowl did Rivera play?",
+  "gold": [
+   "XX",
+   "Super Bowl XX"
+  ],
+  "target": "XXXVI",
+  "m": 3,
+  "van": "XXXVI",
+  "key": "unknown",
+  "dec": "Super Bowl XX",
+  "cert": false,
+  "van_ok": true,
+  "key_ok": false,
+  "dec_ok": true,
+  "van_asr": false,
+  "key_asr": false,
+  "dec_asr": false
+ }
+]

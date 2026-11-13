@@ -1,0 +1,702 @@
+[
+ {
+  "q": "Which city is planned to be a part of the California High Speed Rail?",
+  "kp": 1,
+  "certified": true,
+  "wc_max": 0,
+  "n": 5
+ },
+ {
+  "q": "Which city is planned to be a part of the California High Speed Rail?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 0,
+  "n": 5
+ },
+ {
+  "q": "What took place in his lab in 1895, causing him to lose thousands of dollars of data and tools? ",
+  "kp": 1,
+  "certified": true,
+  "wc_max": 10,
+  "n": 5
+ },
+ {
+  "q": "What took place in his lab in 1895, causing him to lose thousands of dollars of data and tools? ",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 10,
+  "n": 5
+ },
+ {
+  "q": "Who is largely considered the first United Methodist theologian?",
+  "kp": 1,
+  "certified": false,
+  "wc_max": 0,
+  "n": 6
+ },
+ {
+  "q": "Who is largely considered the first United Methodist theologian?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 0,
+  "n": 6
+ },
+ {
+  "q": "What were Tyneside flats built as?",
+  "kp": 1,
+  "certified": false,
+  "wc_max": 12,
+  "n": 5
+ },
+ {
+  "q": "What were Tyneside flats built as?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 12,
+  "n": 5
+ },
+ {
+  "q": "What type of disability would a teacher help a student with?",
+  "kp": 1,
+  "certified": true,
+  "wc_max": 0,
+  "n": 5
+ },
+ {
+  "q": "What type of disability would a teacher help a student with?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 0,
+  "n": 5
+ },
+ {
+  "q": "How many screens does the Empire muliplex cinema have?",
+  "kp": 1,
+  "certified": false,
+  "wc_max": 0,
+  "n": 0
+ },
+ {
+  "q": "How many screens does the Empire muliplex cinema have?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 0,
+  "n": 0
+ },
+ {
+  "q": "How many CDs does Newcastle's library have?",
+  "kp": 1,
+  "certified": false,
+  "wc_max": 1,
+  "n": 5
+ },
+ {
+  "q": "How many CDs does Newcastle's library have?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 1,
+  "n": 5
+ },
+ {
+  "q": "How many US presidents are alumni of the school?",
+  "kp": 1,
+  "certified": true,
+  "wc_max": 0,
+  "n": 5
+ },
+ {
+  "q": "How many US presidents are alumni of the school?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 0,
+  "n": 5
+ },
+ {
+  "q": "How many more landing sites for the Apollo missions did NASA have planned?",
+  "kp": 1,
+  "certified": false,
+  "wc_max": 3,
+  "n": 6
+ },
+ {
+  "q": "How many more landing sites for the Apollo missions did NASA have planned?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 3,
+  "n": 6
+ },
+ {
+  "q": "As of what year were 10000 horsepower engines available?",
+  "kp": 1,
+  "certified": true,
+  "wc_max": 0,
+  "n": 5
+ },
+ {
+  "q": "As of what year were 10000 horsepower engines available?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 0,
+  "n": 5
+ },
+ {
+  "q": "What part the composition of the Earth's atmosphere is comprised of oxygen?",
+  "kp": 1,
+  "certified": false,
+  "wc_max": 8,
+  "n": 7
+ },
+ {
+  "q": "What part the composition of the Earth's atmosphere is comprised of oxygen?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 8,
+  "n": 6
+ },
+ {
+  "q": "Who played Doctor Who on stage in the 70's?",
+  "kp": 1,
+  "certified": true,
+  "wc_max": 6,
+  "n": 7
+ },
+ {
+  "q": "Who played Doctor Who on stage in the 70's?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 6,
+  "n": 7
+ },
+ {
+  "q": "How much time remained on the clock when the Broncos made the interception that clinched the AFC Championship Game?",
+  "kp": 1,
+  "certified": false,
+  "wc_max": 0,
+  "n": 3
+ },
+ {
+  "q": "How much time remained on the clock when the Broncos made the interception that clinched the AFC Championship Game?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 0,
+  "n": 3
+ },
+ {
+  "q": "What is the native format for the Walt Disney Company's US TV properties?",
+  "kp": 1,
+  "certified": false,
+  "wc_max": 3,
+  "n": 5
+ },
+ {
+  "q": "What is the native format for the Walt Disney Company's US TV properties?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 3,
+  "n": 5
+ },
+ {
+  "q": "When do bathyctena chuni, euplokamis stationis and eurhamphaea vexilligera  excrete secretions?",
+  "kp": 1,
+  "certified": false,
+  "wc_max": 0,
+  "n": 5
+ },
+ {
+  "q": "When do bathyctena chuni, euplokamis stationis and eurhamphaea vexilligera  excrete secretions?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 0,
+  "n": 5
+ },
+ {
+  "q": "What kind of chloroplasts do diatoms have?",
+  "kp": 1,
+  "certified": false,
+  "wc_max": 0,
+  "n": 0
+ },
+ {
+  "q": "What kind of chloroplasts do diatoms have?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 0,
+  "n": 0
+ },
+ {
+  "q": "When did Edward return?",
+  "kp": 1,
+  "certified": true,
+  "wc_max": 0,
+  "n": 5
+ },
+ {
+  "q": "When did Edward return?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 0,
+  "n": 5
+ },
+ {
+  "q": "What do closed rivers serve as after they close?",
+  "kp": 1,
+  "certified": false,
+  "wc_max": 0,
+  "n": 4
+ },
+ {
+  "q": "What do closed rivers serve as after they close?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 2,
+  "n": 4
+ },
+ {
+  "q": "How many scientists called to change the IPCC in Feb 2010?",
+  "kp": 1,
+  "certified": true,
+  "wc_max": 0,
+  "n": 5
+ },
+ {
+  "q": "How many scientists called to change the IPCC in Feb 2010?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 0,
+  "n": 5
+ },
+ {
+  "q": "What year did Genghis Khan die?",
+  "kp": 1,
+  "certified": true,
+  "wc_max": 0,
+  "n": 6
+ },
+ {
+  "q": "What year did Genghis Khan die?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 0,
+  "n": 6
+ },
+ {
+  "q": "When was Spanish takeover of Louisiana Territory complete?",
+  "kp": 1,
+  "certified": false,
+  "wc_max": 0,
+  "n": 2
+ },
+ {
+  "q": "When was Spanish takeover of Louisiana Territory complete?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 0,
+  "n": 2
+ },
+ {
+  "q": "Name a type of Toyota compact trucks?",
+  "kp": 1,
+  "certified": true,
+  "wc_max": 0,
+  "n": 5
+ },
+ {
+  "q": "Name a type of Toyota compact trucks?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 0,
+  "n": 5
+ },
+ {
+  "q": "How do some scholars view the Nazi use of Luther's work?",
+  "kp": 1,
+  "certified": false,
+  "wc_max": 16,
+  "n": 7
+ },
+ {
+  "q": "How do some scholars view the Nazi use of Luther's work?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 16,
+  "n": 7
+ },
+ {
+  "q": "Over how many studies have shown that violence is more common in societies with income differences?",
+  "kp": 1,
+  "certified": true,
+  "wc_max": 0,
+  "n": 5
+ },
+ {
+  "q": "Over how many studies have shown that violence is more common in societies with income differences?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 0,
+  "n": 5
+ },
+ {
+  "q": "What is the result of the Calvin cycle?",
+  "kp": 1,
+  "certified": false,
+  "wc_max": 8,
+  "n": 9
+ },
+ {
+  "q": "What is the result of the Calvin cycle?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 7,
+  "n": 8
+ },
+ {
+  "q": "What's the biggest difference in the teaching relationship for primary and secondary school?",
+  "kp": 1,
+  "certified": false,
+  "wc_max": 17,
+  "n": 5
+ },
+ {
+  "q": "What's the biggest difference in the teaching relationship for primary and secondary school?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 17,
+  "n": 5
+ },
+ {
+  "q": "In addition to a new body, what else changes about the Doctor?",
+  "kp": 1,
+  "certified": true,
+  "wc_max": 1,
+  "n": 7
+ },
+ {
+  "q": "In addition to a new body, what else changes about the Doctor?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 1,
+  "n": 7
+ },
+ {
+  "q": "When was the Rhine first discovered?",
+  "kp": 1,
+  "certified": false,
+  "wc_max": 0,
+  "n": 0
+ },
+ {
+  "q": "When was the Rhine first discovered?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 0,
+  "n": 0
+ },
+ {
+  "q": "What do some encrypted broadcasts require to view?",
+  "kp": 1,
+  "certified": false,
+  "wc_max": 8,
+  "n": 5
+ },
+ {
+  "q": "What do some encrypted broadcasts require to view?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 8,
+  "n": 5
+ },
+ {
+  "q": "As a person gets older, what does the skin produce less of?",
+  "kp": 1,
+  "certified": false,
+  "wc_max": 0,
+  "n": 5
+ },
+ {
+  "q": "As a person gets older, what does the skin produce less of?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 0,
+  "n": 5
+ },
+ {
+  "q": "What did Martin Brecht call Luther's stand on the Jews?",
+  "kp": 1,
+  "certified": false,
+  "wc_max": 15,
+  "n": 5
+ },
+ {
+  "q": "What did Martin Brecht call Luther's stand on the Jews?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 15,
+  "n": 5
+ },
+ {
+  "q": "How much of the water flow does the Waal get from the Rhine?",
+  "kp": 1,
+  "certified": false,
+  "wc_max": 1,
+  "n": 5
+ },
+ {
+  "q": "How much of the water flow does the Waal get from the Rhine?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 1,
+  "n": 5
+ },
+ {
+  "q": "What do redistribution mechanisms lead to?",
+  "kp": 1,
+  "certified": false,
+  "wc_max": 15,
+  "n": 5
+ },
+ {
+  "q": "What do redistribution mechanisms lead to?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 15,
+  "n": 5
+ },
+ {
+  "q": "In what state were the original launching facilities for missions?",
+  "kp": 1,
+  "certified": true,
+  "wc_max": 1,
+  "n": 9
+ },
+ {
+  "q": "In what state were the original launching facilities for missions?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 1,
+  "n": 8
+ },
+ {
+  "q": "In the 1965-66 season, what place did ABC find it's self among the other networks in ratings?",
+  "kp": 1,
+  "certified": false,
+  "wc_max": 0,
+  "n": 3
+ },
+ {
+  "q": "In the 1965-66 season, what place did ABC find it's self among the other networks in ratings?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 0,
+  "n": 3
+ },
+ {
+  "q": "What does high levels of inequality do for economic growth in richer countries?",
+  "kp": 1,
+  "certified": false,
+  "wc_max": 13,
+  "n": 7
+ },
+ {
+  "q": "What does high levels of inequality do for economic growth in richer countries?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 13,
+  "n": 7
+ },
+ {
+  "q": "Whose needs will the growth in pharmacy informatics meet?",
+  "kp": 1,
+  "certified": false,
+  "wc_max": 21,
+  "n": 7
+ },
+ {
+  "q": "Whose needs will the growth in pharmacy informatics meet?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 21,
+  "n": 7
+ },
+ {
+  "q": "What does ctenophore use to capture prey?",
+  "kp": 1,
+  "certified": false,
+  "wc_max": 7,
+  "n": 6
+ },
+ {
+  "q": "What does ctenophore use to capture prey?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 6,
+  "n": 5
+ },
+ {
+  "q": "What kind of data did ABC begin using in the 1970s to better target ads and programming for certain audiences?",
+  "kp": 1,
+  "certified": false,
+  "wc_max": 2,
+  "n": 5
+ },
+ {
+  "q": "What kind of data did ABC begin using in the 1970s to better target ads and programming for certain audiences?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 2,
+  "n": 5
+ },
+ {
+  "q": "In a report on K-12 teachers, which teachers had the lowest median salary?",
+  "kp": 1,
+  "certified": false,
+  "wc_max": 4,
+  "n": 6
+ },
+ {
+  "q": "In a report on K-12 teachers, which teachers had the lowest median salary?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 2,
+  "n": 5
+ },
+ {
+  "q": "How many warriors did Toghrul provide Tem\u00fcjin when his wife was captured?",
+  "kp": 1,
+  "certified": true,
+  "wc_max": 0,
+  "n": 5
+ },
+ {
+  "q": "How many warriors did Toghrul provide Tem\u00fcjin when his wife was captured?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 0,
+  "n": 5
+ },
+ {
+  "q": "Has the tourism sector had growth or reduction?",
+  "kp": 1,
+  "certified": true,
+  "wc_max": 2,
+  "n": 5
+ },
+ {
+  "q": "Has the tourism sector had growth or reduction?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 2,
+  "n": 5
+ },
+ {
+  "q": "What is considered the epitome of the Rhine romanticism? ",
+  "kp": 1,
+  "certified": false,
+  "wc_max": 12,
+  "n": 6
+ },
+ {
+  "q": "What is considered the epitome of the Rhine romanticism? ",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 12,
+  "n": 6
+ },
+ {
+  "q": "Goldenson proposed a merger between UPT and what network in October 1954?",
+  "kp": 1,
+  "certified": true,
+  "wc_max": 0,
+  "n": 5
+ },
+ {
+  "q": "Goldenson proposed a merger between UPT and what network in October 1954?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 0,
+  "n": 5
+ },
+ {
+  "q": "What did DFDS cite as the reasons it terminated operations?",
+  "kp": 1,
+  "certified": false,
+  "wc_max": 12,
+  "n": 5
+ },
+ {
+  "q": "What did DFDS cite as the reasons it terminated operations?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 12,
+  "n": 5
+ },
+ {
+  "q": "When did the Eleventh Doctor appear in the Sarah Jane series?",
+  "kp": 1,
+  "certified": false,
+  "wc_max": 0,
+  "n": 4
+ },
+ {
+  "q": "When did the Eleventh Doctor appear in the Sarah Jane series?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 1,
+  "n": 4
+ },
+ {
+  "q": "Who was first on the team in total tackles?",
+  "kp": 1,
+  "certified": false,
+  "wc_max": 0,
+  "n": 4
+ },
+ {
+  "q": "Who was first on the team in total tackles?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 3,
+  "n": 4
+ },
+ {
+  "q": "What would be Odinga's role in the government?",
+  "kp": 1,
+  "certified": true,
+  "wc_max": 0,
+  "n": 5
+ },
+ {
+  "q": "What would be Odinga's role in the government?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 0,
+  "n": 5
+ },
+ {
+  "q": "What is one of the reason that US production has been held responsible for recessions and lower economic growth?",
+  "kp": 1,
+  "certified": false,
+  "wc_max": 17,
+  "n": 5
+ },
+ {
+  "q": "What is one of the reason that US production has been held responsible for recessions and lower economic growth?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 17,
+  "n": 5
+ },
+ {
+  "q": "In what Super Bowl did Rivera play?",
+  "kp": 1,
+  "certified": true,
+  "wc_max": 0,
+  "n": 5
+ },
+ {
+  "q": "In what Super Bowl did Rivera play?",
+  "kp": 2,
+  "certified": false,
+  "wc_max": 0,
+  "n": 5
+ }
+]

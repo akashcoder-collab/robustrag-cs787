@@ -7,8 +7,8 @@ from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.platypus import (SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, Image,
                                 ListFlowable, ListItem, Preformatted, KeepTogether)
 
-FIGS = {"5.": ("fig_main.png", "Figure 1. Accuracy (left) and attack success rate (right) vs number of poisoned passages, n = 46."),
-        "6.": ("fig_temporal.png", "Figure 2. Accuracy on the current answer under Attack A (left) and Attack B (right); coinciding lines hide each other.")}
+FIGS = {"5.": [("fig_models.png", "Figure 1. Accuracy (top) and attack success rate (bottom) vs number of poisoned passages for the three models. Mistral-7B: complete run with a 10-token decoding limit.")],
+        "6.": [("fig_temporal.png", "Figure 2. Accuracy on the current answer under Attack A (left) and Attack B (right); identical for all three models. Coinciding lines hide each other.")]}
 
 ss = getSampleStyleSheet()
 body = ParagraphStyle("b", parent=ss["Normal"], fontName="Times-Roman", fontSize=10, leading=13.5, spaceAfter=5)
@@ -51,7 +51,8 @@ def build(md="REPORT.md", out="REPORT.pdf"):
     story, i, section, pending_fig = [], 0, None, None
     def flush_fig():
         nonlocal pending_fig
-        if pending_fig: story.append(figure(*pending_fig, W)); pending_fig = None
+        for f in pending_fig or []: story.append(figure(*f, W))
+        pending_fig = None
     while i < len(lines):
         ln = lines[i]
         if ln.startswith("# "):
@@ -62,11 +63,11 @@ def build(md="REPORT.md", out="REPORT.pdf"):
             flush_fig()
             title = ln[3:]; section = title.split()[0]
             story.append(Paragraph(inline(title), h2)); i += 1
-            if section in FIGS: pending_fig = FIGS[section]
+            if section in FIGS: pending_fig = list(FIGS[section])
         elif ln.startswith("```"):
             j = i + 1; buf = []
             while not lines[j].startswith("```"): buf.append(lines[j]); j += 1
-            story.append(Preformatted("\n".join(buf), code)); i = j + 1
+            story.append(Preformatted("\n".join(buf), code, maxLineLength=90, newLineChars="    ")); i = j + 1
         elif ln.startswith("|"):
             rows = []
             while i < len(lines) and lines[i].startswith("|"):
@@ -92,7 +93,8 @@ def build(md="REPORT.md", out="REPORT.pdf"):
                 txt += " " + lines[i]; i += 1
             story.append(Paragraph(inline(txt), body))
             # place each figure right after the first paragraph that names it
-            if pending_fig and pending_fig[0] in txt: flush_fig()
+            for f in [f for f in (pending_fig or []) if f[0] in txt]:
+                story.append(figure(*f, W)); pending_fig.remove(f)
         else:
             i += 1
     flush_fig()

@@ -27,7 +27,7 @@ def keyphrases(text):
 def final_prompt(rag, q, words):
     msgs = [{"role": "system", "content": "Answer the query using the provided keywords. Reply with a short answer (a few words)."},
             {"role": "user", "content": f"Keywords: {', '.join(sorted(words))}\n\nQuestion: {q}\nShort answer:"}]
-    return rag.tok.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True)
+    return rag.chat(msgs)
 
 def keyword_agg_paper(rag, q, resps):
     cnt, n = Counter(), 0
@@ -38,7 +38,7 @@ def keyword_agg_paper(rag, q, resps):
     mu = min(ALPHA * n, BETA)
     sel = {w for w, c in cnt.items() if c >= mu} if n else set()
     if not sel: return "unknown", cnt, mu, n
-    return rag.gen([final_prompt(rag, q, sel)], 20)[0], cnt, mu, n
+    return rag.ans(rag.gen([final_prompt(rag, q, sel)], 20)[0]), cnt, mu, n
 
 def main(N=50, MS=(0, 1, 2, 3), out="results_keyword.json"):
     items, passages = R.load_data(6 * N)

@@ -82,7 +82,7 @@ def main(N=40, MS=(0, 1, 2, 3), BUDGET=2):
                 need = [c for c in set(ctx) if c not in rag.cache]
                 if need:
                     outs = rag.gen([rag.prompt(it["q"], c) for c in need], 12)
-                    for c, o in zip(need, outs): rag.cache[c] = o
+                    for c, o in zip(need, outs): rag.cache[c] = rag.ans(o)
                 claims = []
                 for c in ctx:
                     a = rag.cache[c].strip().rstrip(".")
@@ -95,7 +95,7 @@ def main(N=40, MS=(0, 1, 2, 3), BUDGET=2):
                     row[meth + "_ok"] = bool(ans) and R.norm(it["new"]) in ans
                     row[meth + "_asr"] = bool(ans) and R.norm(target) in ans
                 res.append(row)
-    json.dump(res, open("results_temporal.json", "w"), indent=1)
+    json.dump(res, open(f"results_temporal{R.TAG}.json", "w"), indent=1)
     ms = sorted({r["m"] for r in res})
     cv = lambda atk, k: [100 * np.mean([r[k] for r in res if r["m"] == m and r["atk"] == atk]) for m in ms]
     names = {"vote": "Majority vote", "recency": "Naive recency", "thresh_max": "Thresholded, newest supporter date (v1)",
@@ -111,7 +111,7 @@ def main(N=40, MS=(0, 1, 2, 3), BUDGET=2):
     ax[0].set_ylabel("Accuracy on current answer (%)"); ax[0].set_ylim(-5, 105)
     h, l = ax[0].get_legend_handles_labels()
     fig.legend(h, l, loc="lower center", ncol=2, fontsize=8, frameon=False)
-    plt.tight_layout(rect=(0, 0.13, 1, 1)); plt.savefig("fig_temporal.png", dpi=200)
+    plt.tight_layout(rect=(0, 0.13, 1, 1)); plt.savefig(f"fig_temporal{R.TAG}.png", dpi=200)
     for atk in ("fake", "forge"):
         for m in ms:
             print(atk, m, {k: round(cv(atk, k)[ms.index(m)], 1) for k in [x + s for s in ("_ok", "_asr") for x in METHODS]})
